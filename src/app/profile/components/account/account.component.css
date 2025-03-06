@@ -1,0 +1,22 @@
+.container{
+    font-family: Arial, sans-serif;
+    padding: 4px 12px 4px 12px;
+  }
+  ul li {
+    display: flex; /* Flexbox for horizontal alignment */
+    justify-content: space-between; /* Text on the left, arrow on the right */
+    align-items: center; /* Ensures everything stays vertically aligned */
+    padding: 8px 8px; /* Adds spacing between items */
+    font-size: 20px;
+    font-weight: bold;
+}
+.back{
+  left: 10px;
+  width: auto;
+  font-weight: bolder;
+  margin-top: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  height: 20px;
+  background-color: transparent;
+}

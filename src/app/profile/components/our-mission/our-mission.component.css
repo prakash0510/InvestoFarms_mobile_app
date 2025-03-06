@@ -1,0 +1,37 @@
+
+  .back{
+    left: 10px;
+    width: auto;
+    font-weight: bolder;
+    margin-top: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+    height: 20px;
+    background-color: transparent;
+}
+
+
+.dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 8px ;
+    background-color: orange;
+    border-radius: 50%;
+    transform: translateY(6px);
+}
+.vl{
+    margin: 0 13px;
+    border-left: 2px solid orange;
+}
+
+.content {
+    max-width: fit-content;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.text {
+    margin-top: 5px;
+}

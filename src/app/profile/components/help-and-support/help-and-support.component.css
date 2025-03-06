@@ -1,0 +1,78 @@
+
+.back{
+  left: 10px;
+  width: auto;
+  font-weight: bolder;
+  margin-top: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  height: 20px;
+  background-color: transparent;
+}
+
+  .logo {
+    width: 100px;
+    margin-top: 10px;
+  }
+
+  h2 {
+    display: block;
+    justify-content: center;
+    color: #23766A;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  h3 {
+    color:#23766A;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .faq-item {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-bottom: 1px ;
+    padding: 10px 0;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .faq-question .arrow {
+    transition: transform 0.3s;
+  }
+
+  .faq-question .arrow.open {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    padding-left: 10px;
+  }
+
+  .reach-out{
+    display: block;
+    justify-items: center;
+    align-items: center;
+  }
+  .reach-out p{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+  .reach-out p span{
+    color: #23766A;
+  }

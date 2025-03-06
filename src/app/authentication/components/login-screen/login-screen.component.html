@@ -1,0 +1,100 @@
+<div class="auth-container h-[100vh] flex flex-col">
+    <!-- Header Section -->
+    <div class="header bg-[#23766A] rounded-b-[50px] relative flex">
+        <div class="absolute top-[50%] translate-y-[-70%]">
+            <img src="../../../../assets/images/output-onlinepngtools.png" class="h-20 w-auto" alt="">
+        </div>
+        <div class="tabs flex p-2">
+            <div class="tab px-2" [class.active]="!isSignInMode" (click)="isSignInMode = false">
+                <p class="text-white">Sign Up</p>
+            </div>
+            <div class="tab px-2" [class.active]="isSignInMode" (click)="isSignInMode = true">
+                <p class="text-white">Sign In</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content flex-grow">
+        <div *ngIf="!isSignInMode" class="form-wrapper mb-8">
+            <div class="flex justify-center p-6 text-[30px] font-bold">
+                <p>Create An Account</p>
+            </div>
+            <form (ngSubmit)="onSignUp($event)">
+                <div class="px-10">
+                    <div class="flex rounded-lg h-12 border-black border-2 mb-4">
+                        <img class="px-2 p-2" src="../../../../assets/images/user.png" alt="">
+                        <input type="text" placeholder="Full Name">
+                    </div>
+                    <div class="flex rounded-lg h-12 border-black border-2 mb-4">
+                        <img class="px-2 p-2" src="../../../../assets/images/email.png" alt="">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="flex rounded-lg h-12 border-black border-2 mb-6">
+                        <img class="px-2 p-2" src="../../../../assets/images/padlock.png" alt="">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="flex rounded-xl h-12 bg-[#23766A] text-white justify-center align-middle mx-[10%] mb-6">
+                        <button type="submit" (click)="onSignUp($event)">Sign Up</button>
+                    </div>
+                    <div>
+                        <p class="hr-lines">Or sign up with</p>
+                    </div>
+                    <div class="flex justify-center m-6">
+                        <div class="w-[40%] shadow-md text-center rounded-2xl mx-2 p-2">
+                            <p>Google</p>
+                        </div>
+                        <div class="w-[40%] shadow-md bg-[#23766A] text-center rounded-2xl mx-2 p-2">
+                            <p class="text-white">Facebook</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sign In Form -->
+        <div *ngIf="isSignInMode" class="form-wrapper mb-8">
+            <div class="flex justify-center p-6 text-[30px] font-bold">
+                <p>Welcome Back!</p>
+            </div>
+            <form (ngSubmit)="onSignIn($event)">
+                <div class="px-10" >
+                    <div class="flex rounded-lg h-12 border-black border-2 mb-4">
+                        <img class="px-2 p-2" src="../../../../assets/images/email.png" alt="">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="flex rounded-lg h-12 border-black border-2 mb-4">
+                        <img class="px-2 p-2" src="../../../../assets/images/padlock.png" alt="">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="flex pb-8 justify-between">
+                        <div class="px-3">
+                            <input type="checkbox">
+                            <span class="pl-2">Remember Password</span>
+                        </div>
+                        <div class="px-3">
+                            <p routerLink="/Forget-password">Forget Password?</p>
+                        </div>
+                    </div>
+                    <div class="flex rounded-xl h-12 bg-[#23766A] text-white justify-center align-middle mx-[10%] mb-6">
+                        <button type="submit" (click)="onSignIn($event)">Sign In</button>
+                    </div>
+                    <div class="pt-4 w-auto">
+                        <p class="hr-lines">Or sign up with</p>
+                    </div>
+                    <div class="flex justify-center m-6">
+                        <div class="w-[40%] shadow-md text-center rounded-2xl mx-2 p-2">
+                            <p>Google</p>
+                        </div>
+                        <div class="w-[40%] shadow-md bg-[#23766A] text-center rounded-2xl mx-2 p-2">
+                            <p class="text-white">Facebook</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer (Now Always Stays at Bottom) -->
+    <div class="footer h-[100px] z-10 rounded-t-[50px] bg-[#23766A]"></div>
+</div>

@@ -1,0 +1,53 @@
+
+  <div class=" text-[#2e3b32] px-3 py-1 bg-[#E6f4ea] h-[100vh]">
+    <header>
+      <div class="mt-[3vh] flex justify-end">
+        <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="back">
+    
+    </div>
+      <br>
+      <div class="profile">
+        <img src="assets/images/profilePic.png" alt="Profile Avatar" class="avatar" />
+        <div class="profile-info">
+          <h3>Test Profile</h3>
+          <h3>+918509555276</h3>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h3 class="profile-setting">Profile Setting</h3>
+      <ul>
+        <li routerLink="/profile/account-details">Account Details<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+        <li>Nominee Details<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+        
+        <li class="kyc-item">
+          KYC Details
+          <span *ngIf="isKYCCompleted" class="text-[#28937F]">
+            Done
+          </span>
+          <span *ngIf="!isKYCCompleted" class="text-[#E9B90F]">
+            Pending
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3 class="general-setting">General Setting</h3>
+      <ul>
+        <li>Security and Permission  <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+
+        <li routerLink="/profile/help-and-support" class="help-and-support">Help and Support <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+
+       <li routerLink="/profile/our-mission">Our Mission & Vision<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+      </ul>
+    </section>
+
+    <footer>
+      <h3 class="about-investofarms" routerLink="/profile/about-investofarms">About InvestoFarms<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></h3>
+      <button class="feedback">Feedback</button>
+      <button routerLink="/Login" class="logout">Logout</button>
+    </footer>
+    <div class="empty h-32 w-auto"></div>
+  </div>

@@ -1,0 +1,28 @@
+.container{
+    font-family: Arial, sans-serif;
+    padding: 5px 12px 4px 12px ;
+}
+
+.hidden-content {
+    display: none;
+}
+.read-more {
+    font-weight: bold;
+    color: #23766A;
+    cursor: pointer;
+}
+
+.back{
+    left: 10px;
+    width: auto;
+    font-weight: bolder;
+    margin-top: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+    height: 20px;
+    background-color: transparent;
+}
+.bottom-space{
+    height: 100px;
+    width: auto;
+}

@@ -1,0 +1,143 @@
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  
+  .profile-setting,.general-setting{
+      padding-left: 10px;
+      padding-right: 10px;
+      border-color: transparent;
+      border-bottom: 2px solid #23766A ;
+      width: fit-content;
+      
+    }
+    
+    .avatar {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        margin-bottom: 8px;
+    }
+    
+    .profile-info h2 {
+        font-size: 18px;
+        margin: 0;
+    }
+    
+    .profile-info p {
+        font-size: 14px;
+        color: gray;
+        margin: 0;
+    }
+    
+    section {
+        margin-bottom: 15px;
+    }
+    
+    h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        padding-bottom: 0px;
+    }
+    
+    ul li {
+        display: flex; /* Flexbox for horizontal alignment */
+        justify-content: space-between; /* Text on the left, arrow on the right */
+        align-items: center; /* Ensures everything stays vertically aligned */
+        padding: 8px 8px; /* Adds spacing between items */
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    ul li a {
+        text-decoration: none;
+        flex-grow: 1; /* Allows the text to take up the remaining space */
+    }
+    
+    
+    footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .about {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+    .profile-info h3{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    }
+    
+  .about-investofarms{
+    display: flex; /* Flexbox for horizontal alignment */
+    justify-content: space-between; /* Text on the left, arrow on the right */
+    align-items: center; /* Ensures everything stays vertically aligned */
+    padding: 8px 8px; /* Adds spacing between items */
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    border-top: #23766A 2px solid;
+    border-bottom: none;
+    padding-top: 15px;
+  }
+
+  .feedback,
+  .logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px;
+    margin: 8px auto;
+    
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid;
+    border-color: #23766A ;
+    background-color: white;
+    color: #23766A  ;
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem ;
+    background-color: #23766A;
+    color: white;
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+  }
+  .feedback{
+    box-shadow: 0px 2px 6px 1px rgb(176, 175, 175);
+  }
+
+  .feedback:hover,
+  .logout:hover {
+    opacity: 0.9;
+  }
+
+
+
+  

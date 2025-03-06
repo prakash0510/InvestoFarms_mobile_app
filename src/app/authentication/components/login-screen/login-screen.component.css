@@ -1,0 +1,72 @@
+/* Overall container */
+/* .auth-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  } */
+  
+  /* Curved header section */
+  .header {
+    display: flex;
+    height: 250px;
+    background: #23766A; /* or any gradient or color you prefer */
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    justify-content: center;
+    align-items: end;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .tab {
+    color: #fff;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .tab.active {
+    border-bottom: 2px solid #fff;
+  }
+
+  .hr-lines{
+    position: relative;
+    /*  new lines  */
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  .hr-lines:before{
+    content:" ";
+    display: block;
+    height: 2px;
+    margin: 0 -4px;
+    width: 110px;
+    top: 50%;
+    position: absolute;
+    left: 0;
+    background: gray;
+  }
+  .hr-lines:after{
+    content:" ";
+    height: 2px;
+    margin: 0 -4px;
+
+    width: 110px;
+    top: 50%;
+    background: gray;
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+
+  input:focus{
+    outline: none;
+  }
