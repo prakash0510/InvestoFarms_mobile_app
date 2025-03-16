@@ -26,14 +26,14 @@ import { ActivatedRoute } from '@angular/router';
   
         if (container.scrollLeft < maxScrollLeft) {
           container.scrollLeft += container.clientWidth;
-          this.currentIndex++;
+          this.currentIndex++;  
         } else {
           container.scrollLeft = 0;
           this.currentIndex = 0;
         }
   
         this.updateProgressBars();
-      }, 3000); // Auto-scroll every 3 seconds
+      }, 5000); // Auto-scroll every 3 seconds
     }
   
     onScroll() {

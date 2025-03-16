@@ -50,30 +50,39 @@
   
   <!-- Horizontal Scrollable Cards -->
   <div #scrollContainer 
-       class="scroll-container flex gap-4 overflow-x-auto scrollbar-hide p-4"
+       class="scroll-container flex gap-2 overflow-x-auto scrollbar-hide"
        (scroll)="onScroll()">
     
     <div *ngFor="let item of plotDetailsList; let i = index" 
-         class="min-w-[70vw] max-w-[70vw] bg-white p-4 rounded-lg shadow-lg flex-shrink-0 relative">
+         class="min-w-[94vw] max-w-[70vw] bg-white p-1 rounded-lg shadow-lg flex-shrink-0 relative">
       
       <!-- Image -->
-      <img class="w-full h-40 object-cover rounded-lg" [src]="item.image" />
+      <img class="w-full h-fit object-cover rounded-lg" [src]="item.image" />
       
       <!-- Text Details -->
       <div class="bg-[#E3DFDF] p-2 mt-2 rounded-lg">
-        <p class="font-bold">{{ item.name }}</p>
-        <p class="text-sm">{{ item.location }}</p>
-        <p class="text-sm">Min Invest: {{ item.minInvest }}</p>
-        <p class="text-sm">Tenure: {{ item.tenure }}</p>
-        <p class="text-sm">Exp IRR: {{ item.expIRR }}</p>
+        <div class="flex justify-between">
+            <div>
+                <p class="font-bold">{{ item.name }}</p>
+            </div>
+            <div class="text-right">
+                <p class="text-sm">Min Invest: {{ item.minInvest }}</p>
+            </div>
+        </div>
+        <div class="flex justify-between">
+
+            <div>
+                <p class="text-sm">{{ item.location }}</p>
+                <p class="text-sm">{{ item.area }}</p>
+            </div>
+            <div class="text-right">
+                <p class="text-sm">Tenure: {{ item.tenure }}</p>
+                <p class="text-sm">Exp IRR: {{ item.expIRR }}</p>
+            </div>
+        </div>
       </div>
 
-      <!-- Card-Specific Progress Bar -->
-      <div class="absolute bottom-0 left-0 w-full h-2 bg-gray-300 rounded-full">
-        <div class="h-2 bg-green-600 rounded-full transition-all duration-300"
-             [style.width.%]="progressArray[i]"></div>
-      </div>
-    </div>
+    
   </div>
 </div>
 
