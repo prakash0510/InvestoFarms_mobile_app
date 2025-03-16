@@ -7,6 +7,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     ToastrModule.forRoot({preventDuplicates:true,}),
     FormsModule,
+   
     
   ],
   providers: [
@@ -23,4 +26,6 @@ import { FormsModule } from '@angular/forms';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+ 
+}

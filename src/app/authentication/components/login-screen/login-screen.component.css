@@ -36,36 +36,7 @@
     border-bottom: 2px solid #fff;
   }
 
-  .hr-lines{
-    position: relative;
-    /*  new lines  */
-    max-width: 500px;
-    text-align: center;
-  }
-  
-  .hr-lines:before{
-    content:" ";
-    display: block;
-    height: 2px;
-    margin: 0 -4px;
-    width: 110px;
-    top: 50%;
-    position: absolute;
-    left: 0;
-    background: gray;
-  }
-  .hr-lines:after{
-    content:" ";
-    height: 2px;
-    margin: 0 -4px;
-
-    width: 110px;
-    top: 50%;
-    background: gray;
-    display: block;
-    position: absolute;
-    right: 0;
-  }
+ 
 
   input:focus{
     outline: none;

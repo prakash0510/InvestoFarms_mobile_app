@@ -10,22 +10,24 @@
     width: 5000px;
   }
 
-  .progress-bar-container{
-    display: flex;
+  .progress-bar-container {
+    display: flex !important;
     justify-content: center;
-    gap: 10px;
-  }
-  
-  .progress-bar {
-    width: 49px;
-    height: 10px;
-    background-color: white;
-    border: 1px solid #ccc;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.1); /* Temporary background to check visibility */
+    padding: 10px;
+}
+
+.progress-bar {
+    width: 50px;  /* Increase width */
+    height: 10px;  /* Ensure it's visible */
+    background-color: gray;  /* Default color */
+    border: 1px solid black; /* Make sure it's outlined */
     transition: background-color 0.5s ease-in-out;
-  }
-  
-  .progress-bar.active {
-    background-color: green;
-  }
-  
-  
+}
+
+.progress-bar.active {
+    background-color: green !important; /* Ensure active bar is clearly visible */
+}

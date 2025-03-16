@@ -19,7 +19,7 @@ export class AppComponent {
   }
     // Define the type for the keys of activeIcons
     activeIcons: { [key in 'home' | 'setting' | 'dashboard' | 'notification' | 'profile']: string } = {
-      home: 'assets/home.png',
+      home: 'assets/homeActive.png',
       setting: 'assets/setting.png',
       dashboard: 'assets/dashboard.png',
       notification: 'assets/notification.png',

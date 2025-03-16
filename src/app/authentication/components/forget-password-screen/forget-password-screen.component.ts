@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthStateService } from '../../auth-state.service';
 
 @Component({
   selector: 'app-forget-password-screen',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   standalone:false
 })
 export class ForgetPasswordScreenComponent {
+  constructor(private authStateService: AuthStateService) {}
 
+  goToSignUp() {
+    this.authStateService.setSignInMode(false);  // Switch to Sign Up
+  }
 }

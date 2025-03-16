@@ -1,14 +1,14 @@
- <div class="image-container mt-2 max-w-full text-[#2e3b32]" >
-    <img class="" [src]="images[currentIndex]"/>
+ <!-- <div  class="image-container mt-2 w-[100%] text-[#696969] " >
+    <img class="w-[100%]" [src]="images[currentIndex]"/>
         </div>
         <div class="bg-[#E3DFDF] p-2 flex flex-col w-full -translate-y-4">
                 <div class="flex justify-between  w-full">
-                    <p>Plot No. 65 punjab</p>
-                    <p>Min Invest</p>
+                    <p>{{currentPlot.name}}</p>
+                    <p>Min Invest:- {{currentPlot.minInvest}}</p>
                 </div>
                 <div class="flex justify-between w-full">
-                    <p>Punjab Nagar, Punjab India</p>
-                    <p>Tenure</p>
+                    <p>{{currentPlot.location}}</p>
+                    <p>Tenure:- {{currentPlot.tenure}}</p>
                 </div>
                 <div class="flex justify-between w-full">
                     <div class="flex flex-row items-center">
@@ -22,18 +22,80 @@
                             </clipPath>
                             </defs>
                             </svg>
-                        <p class="ml-1">100 Sq. Area</p>
+                        <p class="ml-1">{{currentPlot.area}}</p>
                     </div>
-                    <p>Exp IRR</p>
+                    <p>Exp IRR:- {{currentPlot.expIRR}}</p>
                 </div>
         </div>
-        <div class="progress-bar-container">
+        <div class="flex justify-center gap-2 mt-4">
             <div
-            *ngFor="let i of images; let index = index"
-            class="progress-bar pr-1"
-            [ngClass]="{ active: activeBar === index }"
-            ></div>
-        </div>
+              *ngFor="let img of images; let index = index"
+              class="w-12 h-2 bg-gray-300 transition-all duration-500"
+              [ngClass]="{ 'bg-green-700': activeBar === index }">
+            </div>
+          </div>
+          
         <div class="w-full flex justify-center mt-2">
-            <p class="text-[#23766A] font-bold mb-4"  routerLink="/home/plot-details">View Details--></p>
+            <p class="text-[#23766A] font-bold mb-4" [routerLink]="['/home/plot-details']" [queryParams]="{ id: currentIndex }">
+            View Details →
+          </p>
         </div>
+        
+           -->
+
+
+
+<div  class="image-container mt-2 w-[100%] text-[#696969] " >
+    <div class="relative w-full overflow-hidden">
+  
+  <!-- Horizontal Scrollable Cards -->
+  <div #scrollContainer 
+       class="scroll-container flex gap-4 overflow-x-auto scrollbar-hide p-4"
+       (scroll)="onScroll()">
+    
+    <div *ngFor="let item of plotDetailsList; let i = index" 
+         class="min-w-[70vw] max-w-[70vw] bg-white p-4 rounded-lg shadow-lg flex-shrink-0 relative">
+      
+      <!-- Image -->
+      <img class="w-full h-40 object-cover rounded-lg" [src]="item.image" />
+      
+      <!-- Text Details -->
+      <div class="bg-[#E3DFDF] p-2 mt-2 rounded-lg">
+        <p class="font-bold">{{ item.name }}</p>
+        <p class="text-sm">{{ item.location }}</p>
+        <p class="text-sm">Min Invest: {{ item.minInvest }}</p>
+        <p class="text-sm">Tenure: {{ item.tenure }}</p>
+        <p class="text-sm">Exp IRR: {{ item.expIRR }}</p>
+      </div>
+
+      <!-- Card-Specific Progress Bar -->
+      <div class="absolute bottom-0 left-0 w-full h-2 bg-gray-300 rounded-full">
+        <div class="h-2 bg-green-600 rounded-full transition-all duration-300"
+             [style.width.%]="progressArray[i]"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+</div>
+<style>
+    .scroll-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+ 
+</style>

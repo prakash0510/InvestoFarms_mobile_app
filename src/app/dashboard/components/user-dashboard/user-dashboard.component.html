@@ -1,170 +1,180 @@
-<div class="flex flex-col mx-2 overflow-y-auto overflow-hidden p-1 text-[#2e3b32] bg-[#E6f4ea] h-[100vh] ">
-    <div class=" flex justify-end">
-        <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
-    </div>               
-    <div>
-        <div class="h-[55%] bg-[#23766A] mt-[80px] rounded-xl pb-6 ">
-            <div class="">
-                <div class="flex justify-between p-2">
-                    <div class=" text-left text-[#ffffff] pl-2 ">
-                        <p class="text-xl pb-1">Current</p>
-                        <p class="text-xl">Invested</p>
-                    </div>   
-                    <div class=" text-right text-[#ffffff] pr-2 ">
-                        <p class="text-xl pb-1">₹ 12394577</p>
-                        <p class="text-xl">₹ 123444</p>
-                    </div>         
+<div class="flex flex-col  overflow-y-auto overflow-hidden  text-[#696969] bg-[#E6f4ea] h-[100vh] pb-[100px]">
+    <header class="flex bg-[#23766A] rounded-b-xl shadow-xl justify-between w-[100%] items-center relative">
+        <div class="title m-4 ">
+          <h2 class="text-[30px] text-[#B3DDC0] font-bold pl-2 underline-offset-4">Dashboard</h2>
+      </div>
+        <div class="">
+          <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">     
+      </div>
+      <br>
+      
+        </header>   
+        <div class="mx-3">
+            <div>
+                <div class="h-[80%] bg-[#23766A] mt-4 rounded-xl pb-6 ">
+                    <div class="">
+                        <div class="flex justify-between p-2">
+                            <div class=" text-left text-[#ffffff] pl-2 ">
+                                <p class="text-xl pb-1">Current</p>
+                                <p class="text-xl">Invested</p>
+                            </div>   
+                            <div class=" text-right text-[#ffffff] pr-2 ">
+                                <p class="text-xl pb-1">₹ 12394577</p>
+                                <p class="text-xl">₹ 123444</p>
+                            </div>         
+                        </div>
+                        <div class="line h-[2px] w-full bg-black"></div>
+                        <div class="flex justify-between p-2 px-4">
+                            <div class="text-[#ffffff] ">
+                                <p class="text-xl">Total Return</p>
+                            </div>   
+                            <div class="text-[#ffffff]   ">
+                                <p class="text-xl">₹ 250000</p>
+                            </div>         
+                        </div>  
+                    </div>
                 </div>
-                <div class="line h-[2px] w-full bg-black"></div>
-                <div class="flex justify-between p-2 px-4">
-                    <div class="text-[#ffffff] ">
-                        <p class="text-xl">Total Return</p>
-                    </div>   
-                    <div class="text-[#ffffff]   ">
-                        <p class="text-xl">₹ 250000</p>
-                    </div>         
-                </div>  
+            </div>
+            <div class="flex flex-row items-center justify-between py-2 bg-[#F4F3F3]">
+                <div class="w-48 text-center">
+                    INVESTED PROJECT NAME</div>
+                <div>
+                    <p class="text-[#23766A]">VIEW DETAILS</p>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-5">
+                <div class="">
+                    <p class="font-semibold">
+                        TRANSACTIONS
+                    </p>
+                </div>
+                <div class="text-[#23766A] font-semibold" routerLink="/dashboard/user-transaction" >
+                    VIEW ALL
+                </div>
+            </div>
+            <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">
+                <div>
+                    <p class="font-medium">PROJECT NAME1</p>
+                    <P>18/09/2024 | Razorpay ID</P>
+                </div>
+                <div class="text-[#23766A] text-xl">
+                    <P>2500></P>
+                </div>
+            </div>
+            <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">
+                <div>
+                    <p class="font-medium">PROJECT NAME2</p>
+                    <P>18/09/2024 | Razorpay ID</P>
+                </div>
+                <div class="text-[#23766A] text-xl">
+                    <P>2500></P>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-5">
+                <div class="">
+                    <p class="font-semibold">
+                        TRANSACTIONS
+                    </p>
+                </div>
+                <div class="text-[#23766A] font-semibold">
+                    VIEW ALL
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-4 bg-[#F4F3F3] p-2">
+                <div>
+                   <p>June 2024 Report</p>
+                </div>
+                <div class="flex gap-2 text-[#23766A]">
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="openDownloadedPDF()">PREVIEW</button>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2">
+                <div>
+                   <p>June 2024 Report</p>
+                </div>
+                <div class="flex gap-2 text-[#23766A]">
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="openDownloadedPDF()">PREVIEW</button>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2">
+                <div>
+                   <p>June 2024 Report</p>
+                </div>
+                <div class="flex gap-2 text-[#23766A]">
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="openDownloadedPDF()">PREVIEW</button>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-sm"> 
+                            <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-5">
+                <div class="">
+                    <p class="font-semibold">
+                        TRANSACTIONS
+                    </p>
+                </div>
+                <div class="text-[#23766A] font-semibold">
+                    VIEW ALL
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2">
+                <div>
+                   <p>Invoice(TBD)</p>
+                </div>
+                <div class="flex gap-2 text-[#23766A]">
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="openDownloadedPDF()">PREVIEW</button>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2 ">
+                <div>
+                   <p>Contract Agreement</p>
+                </div>
+                <div class="flex gap-2 text-[#23766A]">
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="openDownloadedPDF()">PREVIEW</button>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-sm">
+                            <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="flex flex-row items-center justify-between py-2 bg-[#F4F3F3]">
-        <div class="w-48 text-center">
-            INVESTED PROJECT NAME</div>
-        <div>
-            <p class="text-[#23766A]">VIEW DETAILS</p>
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-5">
-        <div class="">
-            <p>
-                TRANSACTIONS
-            </p>
-        </div>
-        <div class="text-[#23766A]" routerLink="/dashboard/user-transaction" >
-            VIEW ALL
-        </div>
-    </div>
-    <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">
-        <div>
-            <p>PROJECT NAME1</p>
-            <P>18/09/2024 | Razorpay ID</P>
-        </div>
-        <div class="text-[#23766A] text-xl">
-            <P>2500></P>
-        </div>
-    </div>
-    <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">
-        <div>
-            <p>PROJECT NAME2</p>
-            <P>18/09/2024 | Razorpay ID</P>
-        </div>
-        <div class="text-[#23766A] text-xl">
-            <P>2500></P>
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-5">
-        <div class="">
-            <p>
-                TRANSACTIONS
-            </p>
-        </div>
-        <div class="text-[#23766A]">
-            VIEW ALL
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-4 bg-[#F4F3F3] p-2">
-        <div>
-           <p>June 2024 Report</p>
-        </div>
-        <div class="flex gap-2 text-[#23766A]">
-            <div>
-                <p class="text-sm">
-                    <button (click)="openDownloadedPDF()">PREVIEW</button>
-                </p>
-            </div>
-            <div>
-                <p class="text-sm">
-                    <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2">
-        <div>
-           <p>June 2024 Report</p>
-        </div>
-        <div class="flex gap-2 text-[#23766A]">
-            <div>
-                <p class="text-sm">
-                    <button (click)="openDownloadedPDF()">PREVIEW</button>
-                </p>
-            </div>
-            <div>
-                <p class="text-sm">
-                    <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2">
-        <div>
-           <p>June 2024 Report</p>
-        </div>
-        <div class="flex gap-2 text-[#23766A]">
-            <div>
-                <p class="text-sm">
-                    <button (click)="openDownloadedPDF()">PREVIEW</button>
-                </p>
-            </div>
-            <div>
-                <p class="text-sm"> 
-                    <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-5">
-        <div class="">
-            <p>
-                TRANSACTIONS
-            </p>
-        </div>
-        <div class="text-[#23766A]">
-            VIEW ALL
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2">
-        <div>
-           <p>Invoice(TBD)</p>
-        </div>
-        <div class="flex gap-2 text-[#23766A]">
-            <div>
-                <p class="text-sm">
-                    <button (click)="openDownloadedPDF()">PREVIEW</button>
-                </p>
-            </div>
-            <div>
-                <p class="text-sm">
-                    <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="flex flex-row justify-between mt-1 bg-[#F4F3F3] p-2 ">
-        <div>
-           <p>Contract Agreement</p>
-        </div>
-        <div class="flex gap-2 text-[#23766A]">
-            <div>
-                <p class="text-sm">
-                    <button (click)="openDownloadedPDF()">PREVIEW</button>
-                </p>
-            </div>
-            <div>
-                <p class="text-sm">
-                    <button (click)="downloadPDF()" type=button>DOWNLOAD</button>
-                </p>
-            </div>
-        </div>
-    </div>
+    
 </div>

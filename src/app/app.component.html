@@ -1,49 +1,44 @@
 <div class="app-container">
-    <!-- Dynamic Content Here -->
-    <router-outlet></router-outlet>
-  
-    <!-- Bottom Navigation Bar with Exclusive Icon Toggle -->
-    <div class="bottom-nav flex align-middle h-[75px]" *ngIf="showNavigation">
-      <a routerLink="/home/home-screen" class="nav-item" routerLinkActive="active" (click)="toggleIcon('home')">
-        <i class="material-icons inline-block justify-items-center h-[75px] w-[70px]">
-          <img [src]="activeIcons.home" alt="home icon">
-          <p class="text-[15px] not-italic" >Home</p>
-        </i>
-      </a>
-      
-      <a routerLink="/setting/setting" class="nav-item" routerLinkActive="active" (click)="toggleIcon('setting')">
-        <i class="material-icons inline-block justify-items-center h-[75px] w-[70px]">
-          <img [src]="activeIcons.setting" alt="setting icon">
-          <p class="text-[15px] not-italic">Settings</p>
-        </i>
-      </a>
-      
-      <a routerLink="/dashboard/user-dashboard" class="nav-item" routerLinkActive="active" (click)="toggleIcon('dashboard')">
-        <div class="dashboard-icon inline-block justify-items-center">
-          <div class="dashboard-outer">
-            <i class="material-icons">
-              <img [src]="activeIcons.dashboard" alt="dashboard icon">
-            </i>
-          </div>
-          
-        </div>
-        
-      </a>
-      
-      <a routerLink="/notification/notifications" class="nav-item" routerLinkActive="active" (click)="toggleIcon('notification')">
-        <i class="material-icons inline-block justify-items-center h-[75px] w-[70px]">
-          <img  [src]="activeIcons.notification" alt="notification icon">
-          <p class="text-[15px] not-italic">Notification</p>
-        </i>
-      </a>
-      
-      <a routerLink="/profile/user-profile" class="nav-item" routerLinkActive="active" (click)="toggleIcon('profile')">
-        <i class="material-icons inline-block justify-items-center h-[75px] w-[70px]">
-          <img [src]="activeIcons.profile" alt="profile icon">
-          <p class="text-[15px] not-italic ">Profile</p>
-        </i>
-      </a>
-    </div>
+  <!-- Dynamic Content Here -->
+  <router-outlet></router-outlet>
+
+  <!-- Bottom Navigation Bar with Exclusive Icon Toggle -->
+  <div class="bottom-nav flex fixed bottom-0 left-0 w-full justify-evenly bg-[#F5F6FF]  py-2" *ngIf="showNavigation">
+    <a routerLink="/home/home-screen" class="nav-item flex flex-col w-[86px] h-[58px] items-center p-1 relative" routerLinkActive="active" (click)="toggleIcon('home')">
+      <img [src]="activeIcons.home" alt="home icon" class="w-6 h-6">
+      <p class="text-[15px] not-italic text-center">Home</p>
+    </a>
     
+    <a routerLink="/setting/setting" class="nav-item flex flex-col items-center p-1 relative w-[86px] h-[58px] " routerLinkActive="active" (click)="toggleIcon('setting')">
+      <img [src]="activeIcons.setting" alt="setting icon" class="w-6 h-6">
+      <p class="text-[15px] not-italic text-center">Settings</p>
+    </a>
+    
+    <a routerLink="/dashboard/user-dashboard" class="nav-item flex flex-col items-center p-1 relative " routerLinkActive="active" (click)="toggleIcon('dashboard')">
+      <div class="dashboard-icon absolute flex justify-center items-center rounded-full w-[90px] h-[90px] bg-[#F5F6FF] left-[15px] -translate-x-[35px]">
+        <div class="dashboard-outer flex justify-center items-center w-[70px] h-[70px] bg-white shadow-md rounded-full">
+          <img [src]="activeIcons.dashboard" alt="dashboard icon" class="w-6 h-6">
+        </div>
+      </div>
+    </a>
+    
+    <a routerLink="/notification/notifications" class="nav-item flex flex-col items-center p-1 ml-3 relative w-[86px] h-[58px] " routerLinkActive="active" (click)="toggleIcon('notification')">
+      <img [src]="activeIcons.notification" alt="notification icon" class="w-6 h-6">
+      <p class="text-[15px] not-italic text-center">Notification</p>
+    </a>
+    
+    <a routerLink="/profile/user-profile" class="nav-item flex flex-col items-center p-1 relative w-[86px] h-[58px] " routerLinkActive="active" (click)="toggleIcon('profile')">
+      <img [src]="activeIcons.profile" alt="profile icon" class="w-6 h-6">
+      <p class="text-[15px] not-italic text-center">Profile</p>
+    </a>
   </div>
-  
+</div>
+
+<style>
+  .bottom-nav .nav-item:nth-child(3) {
+    transform: translateY(-55px) translateX(20%); /* Move the center button upward */
+    z-index: 30;
+    width: 58px;
+    height: 58px;
+  }
+</style>

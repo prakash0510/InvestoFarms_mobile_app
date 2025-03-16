@@ -1,5 +1,5 @@
 
-  <div class=" text-[#2e3b32] px-3 py-1 bg-[#E6f4ea] h-[100vh]">
+  <div class=" text-[#696969] px-3 py-1 bg-[#E6f4ea] ">
     <header>
       <div class="mt-[3vh] flex justify-end">
         <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="back">
@@ -18,11 +18,14 @@
     <section>
       <h3 class="profile-setting">Profile Setting</h3>
       <ul>
-        <li routerLink="/profile/account-details">Account Details<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
-        <li>Nominee Details<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+        <li routerLink="/profile/account-details">
+          <p class="font-medium">Account Details</p><img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+        <li>
+          <p class="font-medium">Nominee Details</p><img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
         
         <li class="kyc-item">
-          KYC Details
+          <p class="font-medium">KYC Details</p>
+          
           <span *ngIf="isKYCCompleted" class="text-[#28937F]">
             Done
           </span>
@@ -36,11 +39,14 @@
     <section>
       <h3 class="general-setting">General Setting</h3>
       <ul>
-        <li>Security and Permission  <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+        <li><p class="font-medium">Security and Permission</p>  <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
 
-        <li routerLink="/profile/help-and-support" class="help-and-support">Help and Support <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+        <li routerLink="/profile/help-and-support" class="help-and-support">
+          <p class="font-medium">Help and Support</p> 
+          <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
 
-       <li routerLink="/profile/our-mission">Our Mission & Vision<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+       <li routerLink="/profile/our-mission">
+        <p class="font-medium">Our Mission & Vision</p><img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
       </ul>
     </section>
 

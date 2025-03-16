@@ -18,7 +18,6 @@ import { RestPasswordComponent } from './components/rest-password/rest-password.
     SplashScreenComponent,
     CarousalScreen1Component,
     CarousalScreen2Component,
-    LoginScreenComponent,
     SignUpScreenComponent,
     ForgetPasswordScreenComponent,
     CarousalScreen3Component,

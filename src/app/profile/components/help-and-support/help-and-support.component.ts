@@ -9,6 +9,9 @@ import { FAQ } from '../../../../assets/constants/Faqs';
 export class HelpAndSupportComponent {
   faqs = FAQ;
   toggleAnswer(index: number) {
-    this.faqs[index].open = !this.faqs[index].open;
+    this.faqs = this.faqs.map((faq, i) => ({
+      ...faq,
+      open: i === index ? !faq.open : false, // Open only the clicked one, close others
+    }));
   }
 }

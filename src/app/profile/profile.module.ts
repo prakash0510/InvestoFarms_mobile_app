@@ -15,10 +15,11 @@ import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
-     HelpAndSupportComponent, UserProfileComponent, AboutComponent, OurMissionComponent, AccountComponent,
+     HelpAndSupportComponent, UserProfileComponent, AboutComponent, OurMissionComponent,
   ],
   imports: [
     CommonModule, ProfileRoutingModule,
+    AccountComponent
 ],
   exports:[RouterModule]
 })

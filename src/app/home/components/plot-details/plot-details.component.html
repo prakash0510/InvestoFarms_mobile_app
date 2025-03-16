@@ -1,18 +1,19 @@
-<div class=" flex flex-col overflow-y-auto overflow-hidden px-3 py-1 text-[#2e3b32] bg-[#E6f4ea]">
-    <div class="mt-[3vh] flex justify-end">
-        <img class="back absolute left-0" src="../../../../assets/images/back.png" routerLink="/home/home-screen" alt="back">
+<div *ngIf="plotDetails" class=" flex flex-col overflow-y-auto overflow-hidden px-3 py-1 text-[#696969] bg-[#E6f4ea]">
+    <div class="mt-[3vh] flex ">
+        <img class="back " src="../../../../assets/images/back.png" routerLink="/home/home-screen" alt="back">
+        <p class=" font-bold text-[18px] text-[#23766A]">{{plotDetails.name}}</p>
         <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
-
     </div>
     <div class="mt-[30px] overflow-hidden w-full">
-        <img src="assets/images/plot-image.svg" alt="" class="w-full object-cover mt-2" >
+        <img [src]="plotDetails.image" alt="Plot Image" class="w-full object-cover mt-2">
     </div>
     <div class="flex flex-col mt-5">
         <div>
             <p class="text-[#23766A] font-semibold">Discription</p>
         </div>
         <div class="mt-2 smallphone:text-sm text-[#696969]">
-            <p>For the longest time, the price of farmland in Vadicherla stayed below Rs 20,000 an acre. Ten years ago, that began to change. “In 2003, an acre cost Rs 25,000. By 2006-07, it had climbed to Rs 2 lakh,” says Byru Veerai.<span class="hidden-content" id="moreText">Here is the extra hidden content that appears when you click "Read More".</span></p>
+            <p class="mt-2 smallphone:text-sm text-[#696969]">{{ plotDetails.description }}
+           <span class="hidden-content" id="moreText">Here is the extra hidden content that appears when you click "Read More".</span></p>
             
         </div>
     </div>
@@ -59,5 +60,4 @@
         <button class="h-12 w-full text-white rounded-lg bg-[#23766A]">INVEST NOW</button>
     </div>
     <div class="bottom-space"></div>
-    
 </div>

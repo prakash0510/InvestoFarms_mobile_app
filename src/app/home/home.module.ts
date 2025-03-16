@@ -15,7 +15,7 @@ import { ProgressImageComponent } from './components/progress-image/progress-ima
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
-  ]
+    HomeRoutingModule,
+]
 })
 export class HomeModule { }
