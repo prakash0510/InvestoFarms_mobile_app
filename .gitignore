@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 /bazel-out
+/ios
+/android
+/www
 
 # Node
 /node_modules
