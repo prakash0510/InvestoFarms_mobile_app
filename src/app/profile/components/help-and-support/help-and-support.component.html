@@ -19,6 +19,25 @@
       <div class="faq-question flex justify-between items-center">
         <span class="text-lg text-[#444]">{{ faq.question }}</span>
         <img src="../../../../assets/images/arrow.png" class="arrow h-5 w-5 transition-transform duration-300 transform" [class.open]="faq.open" alt="arrow" />
+<!--
+<div class="   text-[#696969] px-3 py-1 bg-[#E6f4ea] overflow-y-auto h-[100vh]">
+  <div class="mt-[3vh] flex ">
+    <img class="back " src="../../../../assets/images/back.png" routerLink="/profile/user-profile" alt="back">
+    <p class=" font-bold text-[24px] text-[#23766A] -translate-y-2">Help & Support</p>
+    <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
+</div>
+    <br>
+    <br>
+    <h3>FAQS</h3>
+    <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+      <div
+        class="faq-question"
+        (click)="toggleAnswer(i)"
+      >
+        <span>{{ faq.question }}</span>
+        <img src="../../../../assets/images/arrow.png" class="arrow" [class.open]="faq.open" alt="arrow">
+        <!-- <span class="arrow" [class.open]="faq.open">▼</span> -->
+<!---->
       </div>
 
       <!-- FAQ Answer (Now Inside Same div) -->
