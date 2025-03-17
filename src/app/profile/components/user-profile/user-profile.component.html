@@ -1,59 +1,82 @@
-
-  <div class=" text-[#696969] px-3 py-1 bg-[#E6f4ea] ">
-    <header>
-      <div class="mt-[3vh] flex justify-end">
-        <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="back">
-    
+<div class="text-[#696969] px-4 py-2 bg-[#E6F4EA] min-h-[100vh]">
+  <!-- Header Section -->
+  <header class="mt-[2vh]">
+    <div class="flex justify-end">
+      <img class="h-8 w-auto" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
     </div>
-      <br>
-      <div class="profile">
-        <img src="assets/images/profilePic.png" alt="Profile Avatar" class="avatar" />
-        <div class="profile-info">
-          <h3>Test Profile</h3>
-          <h3>+918509555276</h3>
-        </div>
+    <div class="profile flex items-center mt-6">
+      <img src="assets/images/profilePic.png" alt="Profile Avatar" class="avatar h-16 w-16 rounded-full border-2 border-[#28937F]" />
+      <div class="profile-info ml-4">
+        <h3 class="text-[20px] font-bold text-[#23766A]">Test Profile</h3>
+        <h3 class="text-[16px] text-[#696969]">+918509555276</h3>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section>
-      <h3 class="profile-setting">Profile Setting</h3>
-      <ul>
-        <li routerLink="/profile/account-details">
-          <p class="font-medium">Account Details</p><img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
-        <li>
-          <p class="font-medium">Nominee Details</p><img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
-        
-        <li class="kyc-item">
-          <p class="font-medium">KYC Details</p>
-          
-          <span *ngIf="isKYCCompleted" class="text-[#28937F]">
-            Done
-          </span>
-          <span *ngIf="!isKYCCompleted" class="text-[#E9B90F]">
-            Pending
-          </span>
-        </li>
-      </ul>
-    </section>
+  <!-- Profile Settings Section -->
+  <section class="mt-8">
+    <h3 class="text-[18px] font-bold text-[#23766A] mb-4">Profile Setting</h3>
+    <ul class="space-y-3">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/account-details">
+        <p class="font-medium text-[#696969]">Account Details</p>
+        <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
+      </li>
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+        <p class="font-medium text-[#696969]">Nominee Details</p>
+        <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
+      </li>
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+        <p class="font-medium text-[#696969]">KYC Details</p>
+        <span *ngIf="isKYCCompleted" class="text-[#28937F] font-medium">
+          Done
+        </span>
+        <span *ngIf="!isKYCCompleted" class="text-[#E9B90F] font-medium">
+          Pending
+        </span>
+      </li>
+    </ul>
+  </section>
 
-    <section>
-      <h3 class="general-setting">General Setting</h3>
-      <ul>
-        <li><p class="font-medium">Security and Permission</p>  <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+  <!-- General Settings Section -->
+  <section class="mt-8">
+    <h3 class="text-[18px] font-bold text-[#23766A] mb-4">General Setting</h3>
+    <ul class="space-y-3">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+        <p class="font-medium text-[#696969]">Security and Permission</p>
+        <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
+      </li>
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/help-and-support">
+        <p class="font-medium text-[#696969]">Help and Support</p>
+        <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
+      </li>
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/our-mission">
+        <p class="font-medium text-[#696969]">Our Mission & Vision</p>
+        <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
+      </li>
+      
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/our-mission">
+        <p class="font-medium text-[#696969]">About InvestoFarms</p>
+        <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
+      </li>
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/about-investofarms">
+        <p class="font-medium text-[#696969]">About InvestoFarms</p>
+        <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
+      </li>
+    </ul>
+  </section>
 
-        <li routerLink="/profile/help-and-support" class="help-and-support">
-          <p class="font-medium">Help and Support</p> 
-          <img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
+  <!-- Footer Buttons -->
+  <footer class="mt-8">
+    <div class="flex flex-col space-y-3">
+      <button class="w-full p-3 bg-[#28937F] text-white rounded-lg hover:bg-[#23766A] transition-colors shadow-md">
+        Feedback
+      </button>
+      <button routerLink="/Login" class="w-full p-3 bg-[#E9B90F] text-white rounded-lg hover:bg-[#DAA520] transition-colors shadow-md">
+        Logout
+      </button>
+    </div>
+  </footer>
 
-       <li routerLink="/profile/our-mission">
-        <p class="font-medium">Our Mission & Vision</p><img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></li>
-      </ul>
-    </section>
-
-    <footer>
-      <h3 class="about-investofarms" routerLink="/profile/about-investofarms">About InvestoFarms<img class="arrow-right" src="../../assets/images/Chevron right.png" alt="arrow-right"></h3>
-      <button class="feedback">Feedback</button>
-      <button routerLink="/Login" class="logout">Logout</button>
-    </footer>
-    <div class="empty h-32 w-auto"></div>
-  </div>
+  <!-- Empty Space for Better Scroll -->
+  <div class="empty h-32 w-auto"></div>
+</div>
