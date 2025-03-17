@@ -1,65 +1,72 @@
 import { ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-// import { title } from 'process';
 
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
-  styleUrl: './setting.component.css',
-  encapsulation:ViewEncapsulation.None ,
-  standalone:false
+  styleUrls: ['./setting.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class SettingComponent {
+  // Dropdown states
   languageDD = false;
   currencyDD = false;
 
+  // Selected options
   selectedOptionC: string | null = null;
   selectedOptionL: string | null = null;
-  LanguageOptions: string[] = ['Hindi', 'English'];
-  currencyOptions: string[]= ['INR','USD']
 
+  // Dropdown options
+  LanguageOptions: string[] = ['Hindi', 'English'];
+  currencyOptions: string[] = ['INR', 'USD'];
+
+  constructor(private toastr: ToastrService, private cdr: ChangeDetectorRef) {}
+
+  // Toggle language dropdown
   toggleDropdownL() {
     this.languageDD = !this.languageDD;
   }
+
+  // Toggle currency dropdown
   toggleDropdownC() {
     this.currencyDD = !this.currencyDD;
   }
 
-  constructor(private toastr: ToastrService,private cdr: ChangeDetectorRef) {}
-
-  selectOption(LanguageOptions: string, event: Event) {
+  // Handle language selection
+  selectOption(selectedLanguage: string, event: Event) {
     event.stopPropagation(); // Prevent dropdown from closing immediately
-    this.selectedOptionL = LanguageOptions;
-    if(this.selectedOptionL==='Hindi'){
-      this.selectedOptionL = null;
+    this.selectedOptionL = selectedLanguage;
+
+    if (selectedLanguage === 'Hindi') {
+      this.selectedOptionL = null; // Reset selection
       this.showMsgToast();
       setTimeout(() => {
-        this.selectedOptionL = null;
         this.cdr.detectChanges(); // Force UI update
       });
-    }
-    else{
+    } else {
       this.languageDD = false; // Close dropdown after selection
-    } 
+    }
   }
 
-  selectCurrency(currencyOptions: string, event: Event){
+  // Handle currency selection
+  selectCurrency(selectedCurrency: string, event: Event) {
     event.stopPropagation(); // Prevent dropdown from closing immediately
-    this.selectedOptionC = currencyOptions;
-    if(this.selectedOptionC==='USD'){
-      this.selectedOptionC=null;
+    this.selectedOptionC = selectedCurrency;
+
+    if (selectedCurrency === 'USD') {
+      this.selectedOptionC = null; // Reset selection
       this.showMsgToast();
       setTimeout(() => {
-        this.selectedOptionC = null;
         this.cdr.detectChanges(); // Force UI update
       });
-    } else{
+    } else {
       this.currencyDD = false; // Close dropdown after selection
     }
   }
 
-
-  showMsgToast(){
-    this.toastr.warning("Coming Soon");
+  // Show toast message
+  showMsgToast() {
+    this.toastr.warning('Coming Soon');
   }
 }

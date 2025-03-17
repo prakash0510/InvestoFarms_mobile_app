@@ -1,100 +1,90 @@
-<div class=" text-[#2e3b32] px-3 py-1 bg-[#E6f4ea] h-[100vh] overflow-auto" [ngClass]="{ 'pb-[300px]': isKeyboardOpen }"
-#formContainer>
-  <div class="mt-[3vh] flex ">
-    <img (click)="goBack()" class="back " src="../../../../assets/images/back.png"  alt="back">
-    <p class=" font-bold text-[24px] text-[#23766A] -translate-y-2">Account Details</p>
-    <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
-</div>
-      <br>
-        <section>
-            <div class="details">
-                <ul>
-                    <div class="flex justify-center w-[100%] p-5">
+<div class="text-[#2e3b32] px-4 py-2 bg-[#E6F4EA] min-h-[100vh] overflow-auto" [ngClass]="{ 'pb-[300px]': isKeyboardOpen }" #formContainer>
+  <!-- Header Section -->
+  <div class="mt-[2vh] flex items-center justify-between px-4">
+    <img (click)="goBack()" class="h-6 w-6 cursor-pointer hover:opacity-80 transition-opacity" src="../../../../assets/images/back.png" alt="back">
+    <p class="font-bold text-[24px] text-[#23766A]">Account Details</p>
+    <img class="h-8 w-auto" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
+  </div>
 
-                      <form class="example-form max-w-[500px] min-w-[150px] w-[100%] text-[#23766A]">                      
-                        <table class="example-full-width w-[100%]" cellspacing="0"><tr>
-                          <td><mat-form-field class="example-full-width w-[100%] text-[#23766A]">
-                            <mat-label class="text-[#23766A]">First name</mat-label>
-                            <input class="bg-[#23766A]" matInput (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                          </mat-form-field></td></tr>
-                          <tr>
-                          <td><mat-form-field class="example-full-width w-[100%] text-[#23766A]">
-                            <mat-label class="text-[#23766A]">Last Name </mat-label>
-                            <input matInput (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                          </mat-form-field></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <mat-form-field class="example-full-width text-[#23766A] w-full">
-                              <mat-label class="text-[#23766A]">Email</mat-label>
-                              <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                                     placeholder="Ex. pat@example.com"  readonly="true" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-                                <mat-error>Please enter a valid email address</mat-error>
-                              }
-                              @if (emailFormControl.hasError('required')) {
-                                <mat-error>Email is <strong>required</strong></mat-error>
-                              }
-                            </mat-form-field>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <mat-form-field class="pb-2 w-full">
-                              <mat-label class="text-[#23766A]">Date Of Birth</mat-label>
-                              <input matInput [matDatepicker]="picker" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                              <mat-hint>MM/DD/YYYY</mat-hint>
-                              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                              <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>  <mat-form-field class="example-full-width w-[100%]">
-                            <mat-label class="text-[#23766A]">Phone Number</mat-label>
-                            <span matTextPrefix class="text-[#23766A]">+91 &nbsp;</span>
-                            <input type="tel" matInput placeholder="98765432XX" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                            <mat-icon matSuffix>mode_edit</mat-icon>
-                          </mat-form-field></td>
-                        </tr>
-                      </table>
-                          <div>
-                            <mat-form-field class="example-full-width w-full">
-                              <mat-label class="text-[#23766A]">City</mat-label>
-                              <input matInput placeholder="Ex. San Francisco" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                            </mat-form-field>
-                          </div>
-                          <div>
-                            <mat-form-field class="example-full-width w-full">
-                              <mat-label class="text-[#23766A]">State</mat-label>
-                              <input matInput placeholder="Ex. California" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                            </mat-form-field>
-                          </div>
-                        
-                        
-                        <table class="example-full-width " cellspacing="0"><tr>
-                          <td></td>
-                          
-                          <td></td>
-                          </tr>
-                          <tr>
-                          <td><mat-form-field class="example-full-width w-full">
-                            <mat-label class="text-[#23766A]">Postal Code</mat-label>
-                            <input matInput #postalCode  placeholder="Ex. 94105" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()">
-                          </mat-form-field></td>
-                        </tr></table>
-                        <div class="flex mb-[100px]">
-                          <button type="submit">
-                            <div class=" m-2 p-2 px-4 bg-[#23766A] text-white rounded-md">Update </div>
-                          </button>
-                          <button>
-                            <div class=" p-2 px-4 bg-[#23766A] text-white rounded-md">Edit</div>
-                          </button>
-                        </div>
-                      </form>
-                      
-                    </div>
-                </ul>
-            </div>
-        </section>
+  <!-- Form Section -->
+  <section class="mt-6 px-4">
+    <form class="example-form w-full text-[#23766A]">
+      <!-- First Name -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">First Name</label>
+        <input type="text" placeholder="First Name"(focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+               class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
+      </div>
+
+      <!-- Last Name -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">Last Name</label>
+        <input type="text" placeholder="Last name"  (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+               class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
+      </div>
+
+      <!-- Email -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">Email</label>
+        <input type="email" [formControl]="emailFormControl" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+               class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent"
+               placeholder="Ex. investo@support.com" readonly>
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+          <p class="text-[#E9B90F] text-sm mt-2">Please enter a valid email address</p>
+        }
+        @if (emailFormControl.hasError('required')) {
+          <p class="text-[#E9B90F] text-sm mt-2">Email is <strong>required</strong></p>
+        }
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">Date of Birth</label>
+        <input type="date" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+               class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
+        <p class="text-[#23766A] text-sm mt-2">MM/DD/YYYY</p>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">Phone Number</label>
+        <div class="flex items-center bg-white rounded-lg border-[#23766A] border-2 p-3 focus-within:ring-2 focus-within:ring-[#28937F] focus-within:border-transparent">
+          <span class="text-[#23766A]">+91</span>
+          <input type="tel" placeholder="98765432XX" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+                 class="w-full ml-2 focus:outline-none">
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">City</label>
+        <input type="text" placeholder="Ex. Bengaluru" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+               class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
+      </div>
+
+      <!-- State -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">State</label>
+        <input type="text" placeholder="Ex. Karnataka" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+               class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
+      </div>
+
+      <!-- Postal Code -->
+      <div class="mb-6">
+        <label class="block text-[#23766A] font-medium mb-2">Postal Code</label>
+        <input type="text" placeholder="Ex. 530068" (focus)="adjustFormPadding($event)" (blur)="resetFormPadding()"
+               class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex  gap-4 mb-8">
+        <button type="submit" class="bg-[#23766A] w-full text-white px-6 py-2 rounded-lg hover:bg-[#28937F] transition-colors shadow-md active:scale-95">
+          Update
+        </button>
+        <button class="bg-[#E9B90F] text-white w-full px-6 py-2 rounded-lg hover:bg-[#DAA520] transition-colors shadow-md active:scale-95">
+          Edit
+        </button>
+      </div>
+    </form>
+  </section>
 </div>

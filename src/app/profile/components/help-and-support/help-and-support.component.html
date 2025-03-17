@@ -1,3 +1,25 @@
+<div class="bg-[#F3F6F9] min-h-screen p-5">
+  <!-- Header Section -->
+  <div class="flex items-center justify-between mb-8">
+    <img class="h-6 cursor-pointer" src="../../../../assets/images/back.png" routerLink="/profile/user-profile" alt="back">
+    <p class="font-semibold text-2xl text-[#23766A]">Help & Support</p>
+    <img class="h-[32px] w-auto" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
+  </div>
+
+  <!-- FAQs Section -->
+  <h3 class="font-bold text-xl text-[#444] text-center">FAQS</h3>
+
+  <div *ngFor="let faq of faqs; let i = index" class="faq-item" >
+    <!-- FAQ Question and Answer Inside Same Div -->
+    <div
+      class="faq-container p-4 bg-[#ffffff] shadow-md rounded-lg cursor-pointer transition-all duration-300 hover:shadow-lg"
+      (click)="toggleAnswer(i)"
+    >
+      <!-- FAQ Question and Answer -->
+      <div class="faq-question flex justify-between items-center">
+        <span class="text-lg text-[#444]">{{ faq.question }}</span>
+        <img src="../../../../assets/images/arrow.png" class="arrow h-5 w-5 transition-transform duration-300 transform" [class.open]="faq.open" alt="arrow" />
+<!--
 <div class="   text-[#696969] px-3 py-1 bg-[#E6f4ea] overflow-y-auto h-[100vh]">
   <div class="mt-[3vh] flex ">
     <img class="back " src="../../../../assets/images/back.png" routerLink="/profile/user-profile" alt="back">
@@ -15,16 +37,19 @@
         <span>{{ faq.question }}</span>
         <img src="../../../../assets/images/arrow.png" class="arrow" [class.open]="faq.open" alt="arrow">
         <!-- <span class="arrow" [class.open]="faq.open">▼</span> -->
+<!---->
       </div>
-      <div
-        class="faq-answer"
-        *ngIf="faq.open"
-      >
+
+      <!-- FAQ Answer (Now Inside Same div) -->
+      <div *ngIf="faq.open" class="faq-answer mt-2 px-4 py-2 text-[#555] ">
         {{ faq.answer }}
       </div>
     </div>
-    <div class="reach-out block mb-[200px] mt-2">
-      <p class="justify-center">Still need more help?</p>
-      <p>Reach out to us on <span><a href="https://api.whatsapp.com/send/?phone=919353511090">Whatsapp</a></span></p>
-    </div>
   </div>
+
+  <!-- Reach Out Section -->
+  <div class="reach-out bg-[#ffffff] p-6  rounded-lg shadow-md text-center">
+    <p class="text-lg text-[#333] mb-2">Still need more help?</p>
+    <p class="text-md text-[#666]">Reach out to us on <a href="https://api.whatsapp.com/send/?phone=919353511090" class="text-[#23766A] hover:text-[#2D8C63]">Whatsapp</a></p>
+  </div>
+</div>
