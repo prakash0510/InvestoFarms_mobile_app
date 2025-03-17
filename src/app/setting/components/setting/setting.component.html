@@ -1,117 +1,85 @@
-<div class="bg-[#E6F4EA] min-h-screen">
+<div class="bg-[#E6f4ea] h-[100vh]">
 
-  <!-- Header Section -->
-  <header class="flex bg-[#23766A] rounded-b-xl shadow-lg justify-between items-center w-full p-4">
-    <!-- Title -->
-    <div class="title">
-      <h2 class="text-3xl text-[#B3DDC0] font-bold underline-offset-4">Settings</h2>
-    </div>
-
-    <!-- Logo -->
-    <div>
-      <img 
-        class="h-8 w-auto" 
-        src="../../../../assets/images/output-onlinepngtools.png" 
-        alt="InvestoFarms Logo"
-      >
-    </div>
-  </header>
-
-  <!-- Settings Section -->
-  <section class="p-6">
-    <div class="settings">
-      <ul class="space-y-6">
-        <!-- Theme Toggle -->
-        <li class="flex justify-between items-center text-[#696969]">
-          <span>Theme</span>
-          <label class="switch">
-            <input type="checkbox" (change)="toggleTheme()">
-            <span class="slider round"></span>
-          </label>
-        </li>
-
-        <!-- Notification Toggle -->
-        <li class="flex justify-between items-center text-[#696969]">
-          <span>Notification</span>
-          <label class="switch">
-            <input type="checkbox" (change)="toggleNotifications()">
-            <span class="slider round"></span>
-          </label>
-        </li>
-
-        <!-- Language Dropdown -->
-        <li class="flex justify-between items-center text-[#696969]">
-          <span>Language</span>
-          <div class="custom-dropdown" (click)="toggleDropdownL()">
-            <button class="dropdown-btn">
-              {{ selectedOptionL || LanguageOptions[1] }}
-            </button>
-            <ul *ngIf="languageDD" class="dropdown-options">
-              <li *ngFor="let option of LanguageOptions" (click)="selectOption(option, $event)">
-                {{ option }}
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <!-- Currency Dropdown -->
-        <li class="flex justify-between items-center text-[#696969]">
-          <span>Currency</span>
-          <div class="custom-dropdown" (click)="toggleDropdownC()">
-            <button class="dropdown-btn">
-              {{ selectedOptionC || currencyOptions[0] }}
-            </button>
-            <ul *ngIf="currencyDD" class="dropdown-options">
-              <li *ngFor="let option of currencyOptions" (click)="selectCurrency(option, $event)">
-                {{ option }}
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <!-- Biometrics -->
-        <li class="flex justify-between items-center text-[#696969]">
-          <span>Biometrics</span>
-          <img 
-            class="h-6 w-6 cursor-pointer" 
-            src="../../assets/images/Chevron right.png" 
-            alt="Biometrics Arrow"
-          >
-        </li>
-      </ul>
-
-      <!-- Social Media Section -->
-      <div class="mt-12">
-        <h2 class="text-2xl text-[#23766A] font-bold mb-4">Show us your love & follow</h2>
-        <div class="flex space-x-4">
-          <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/company/investofarms/" target="_blank" rel="noopener noreferrer">
-            <img 
-              class="h-8 w-8 hover:opacity-80 transition-opacity" 
-              src="../../assets/images/linkedin.png" 
-              alt="LinkedIn"
-            >
-          </a>
-
-          <!-- Instagram -->
-          <a href="https://www.facebook.com/investofarms/" target="_blank" rel="noopener noreferrer">
-            <img 
-              class="h-8 w-8 hover:opacity-80 transition-opacity" 
-              src="../../assets/images/instagram.png" 
-              alt="Instagram"
-            >
-          </a>
-
-          <!-- Facebook -->
-          <a href="https://www.facebook.com/investofarms/" target="_blank" rel="noopener noreferrer">
-            <img 
-              class="h-8 w-8 hover:opacity-80 transition-opacity" 
-              src="../../assets/images/facebook.png" 
-              alt="Facebook"
-            >
-          </a>
-        </div>
+  <!-- <div class="container "> -->
+      <header class="flex bg-[#23766A] rounded-b-xl shadow-xl justify-between w-[100%] items-center relative">
+        <div class="title m-4 ">
+          <h2 class="text-[30px] text-[#B3DDC0] font-bold pl-2 underline-offset-4">Settings</h2>
       </div>
-    </div>
-  </section>
+        <div class="">
+          <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">     
+      </div>
+      <br>
+      
+        </header>
+        <section class="p-4">
+          <div class="settings max-h-full">
+              
+          
+              <ul>
+                <li class="text-[#696969]" >Theme<label class="switch">
+                  <input type="checkbox" >
+                  <span class="slider1 round"></span>
+                </label>
+                </li>
+                <li class="text-[#696969]" >Notification<label class="switch">
+                  <input type="checkbox">
+                  <span class="slider2 round"></span>
+                </label>
+                </li>
+            <li class="text-[#696969]" >Language
+              <div class="custom-dropdown" (click)="toggleDropdownL()" >
+                  <button class="dropdown-btn">
+                    {{selectedOptionL || LanguageOptions[1]}}
+                  </button>
+                  <ul *ngIf="languageDD" class="dropdown-options">
+                    <li class="justify-center" *ngFor="let option of LanguageOptions" (click)="selectOption(option, $event)">
+                      {{ option }}
+                    </li>
+                  </ul>
+                </div>
+            </li>
+            <li class="text-[#696969]" >Currency
+              <div class="custom-dropdown" (click)="toggleDropdownC()">
+                  <button class="dropdown-btn">
+                    {{selectedOptionC|| currencyOptions[0]}}
+                  </button>
+                  <ul *ngIf="currencyDD" class="dropdown-options">
+                      <li class="justify-center" *ngFor="let option of currencyOptions" (click)="selectCurrency(option, $event)">
+                        {{ option }}
+                      </li>
+                  </ul>
+                </div>
+            </li>
+            <li class="text-[#696969]" >Biometrics<img class="arrow-right" src="../../assets/images/Chevron right.png" alt=""></li>
+            <br>
+            <br>
+            <h2 class="text-[24px] text-[#23766A] font-bold pl-2">Show us your love & follow</h2>
+            <div class="flex p-4">
+  
+              <div class="px-2" >
+                <a href="https://www.linkedin.com/company/investofarms/">
+                  <img class="h-8 w-8" src="../../assets/images/linkedin.png" alt="">
+                </a>
+              </div>
+                  
+            
+              <div class="px-2">
+                <a href="https://www.facebook.com/investofarms/">
+                  <img class="h-8 w-8" src="../../assets/images/instagram.png" alt="">
+                </a>
+                
+              </div>
+  
+              <div class="px-2">
+                <a href="https://www.facebook.com/investofarms/">
+                  <img class="h-8 w-8" src="../../assets/images/facebook.png" alt="arrow-right">
+                </a>
+  
+              </div>
+            </div>
+  
+          </ul>
+          </div>
+        </section>
+    <!-- </div> -->
 </div>
