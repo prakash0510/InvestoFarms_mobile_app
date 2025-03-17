@@ -24,10 +24,7 @@
     "@capacitor/cli": "^7.0.1",
     "@capacitor/core": "^7.0.1",
     "@capacitor/ios": "^7.0.1",
-<<<<<<< HEAD
     "@capacitor/keyboard": "^7.0.0",
-=======
->>>>>>> eea587f791bcf75b1238e7fd572f7e11984e87d1
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

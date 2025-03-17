@@ -14,4 +14,7 @@
 
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    overscroll-behavior: none; /* Prevents pull-to-refresh issues */
+    scroll-padding-bottom: 56px; /* Height of bottom nav */ }
+

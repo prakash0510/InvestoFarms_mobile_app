@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,12 +11,27 @@ export class AppComponent {
   title = 'investoFarm';
   showNavigation = true; 
 
-  constructor(private router: Router) {
+  
+
+  constructor(private router: Router,private renderer: Renderer2 ) {
     this.router.events.subscribe(() => {
       const hiddenRoutes = ['/','/Carousal-1','/Carousal-2','/Carousal-3','/Login', '/Forget-password','/Otp-forgot-password','/Rest-password','/Sign-up']; // List of pages to HIDE navigation
       this.showNavigation = !hiddenRoutes.includes(this.router.url);
     });
   }
+
+  
+  ngOnInit() {
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        const bottomNav = document.querySelector(".bottom-nav") as HTMLElement;
+        if (bottomNav) {
+          this.renderer.setStyle(bottomNav, "bottom", "0px");
+        }
+      });
+    }
+  }
+
     // Define the type for the keys of activeIcons
     activeIcons: { [key in 'home' | 'setting' | 'dashboard' | 'notification' | 'profile']: string } = {
       home: 'assets/homeActive.png',
