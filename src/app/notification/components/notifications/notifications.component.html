@@ -1,4 +1,4 @@
-<div class="bg-[#E6f4ea] text-[#2e3b32] h-[100vh] overflow-y-auto">
+<div class="bg-[#E6f4ea] text-[#2e3b32] h-[100vh] overflow-y-auto overflow-hidden">
     <header class="flex bg-[#23766A] rounded-b-xl shadow-xl justify-between w-[100%] items-center p-4">
       <div class="title">
         <h2 class="text-[30px] text-[#B3DDC0] font-bold pl-2 underline-offset-4">Notification</h2>
@@ -8,7 +8,7 @@
       </div>
     </header>
   
-    <div class="flex flex-col mx-2 overflow-y-auto p-1 px-3 mt-[20px] space-y-3">
+    <div class="flex flex-col mx-2 overflow-y-auto p-1 px-3 mt-[20px] space-y-3 mb-40">
       <!-- Loop through notifications using *ngFor -->
       <div *ngFor="let notification of notifications" 
            class="flex justify-between items-center bg-[#B3DDC0] p-4 rounded-2xl shadow-sm transition-shadow 
