@@ -1,5 +1,7 @@
 import { Component, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { PlotService } from './services/plot.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +15,17 @@ export class AppComponent {
 
   
 
-  constructor(private router: Router,private renderer: Renderer2 ) {
+  constructor(private router: Router,private renderer: Renderer2,private plotservice: PlotService ) {
     this.router.events.subscribe(() => {
       const hiddenRoutes = ['/','/Carousal-1','/Carousal-2','/Carousal-3','/Login', '/Forget-password','/Otp-forgot-password','/Rest-password','/Sign-up']; // List of pages to HIDE navigation
       this.showNavigation = !hiddenRoutes.includes(this.router.url);
     });
   }
+  
 
   
   ngOnInit() {
+    this.plotservice.fetchPlotDetails();
     if (window.visualViewport) {
       window.visualViewport.addEventListener("resize", () => {
         const bottomNav = document.querySelector(".bottom-nav") as HTMLElement;

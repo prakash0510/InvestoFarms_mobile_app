@@ -9,10 +9,10 @@
     <div class="mt-4  w-full">
         <img src="assets/images/adv-image.svg" alt="" class="w-full object-cover">
     </div>
-    <div class="flex flex-row justify-center items-center gap-6 border-2 border-[#23766A] p-2 w-full mt-5 mb-10">
+    <div *ngFor="let item of news; let i = index" class="flex flex-row justify-center items-center gap-6 border-2 border-[#23766A] p-2 w-full mt-5 mb-10">
         <div>
             <div class="w-28 h-28 border-2 border-[#23766A] rounded-full flex justify-center items-center">
-                <svg width="85" height="82" viewBox="0 0 85 82" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <!-- <svg width="85" height="82" viewBox="0 0 85 82" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect width="84.0198" height="82" fill="url(#pattern0_43_39)"/>
                     <defs>
                     <pattern id="pattern0_43_39" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -20,14 +20,14 @@
                     </pattern>
                     <image id="image0_43_39" width="96" height="96" xlink:href="data:image/png;base64,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"/>
                     </defs>
-                    </svg>
-                    
+                    </svg> -->
+                    <img [src]="'https://investofarms.com'+item.Image_URL" alt="">
             </div>
         </div>
         <div class="">
             <div class="flex flex-row w-full justify-between px-2">
                 <div class="">
-                    <p class="text-[#23766A] text-lg font-medium">Emdadul Islam</p>
+                    <p class="text-[#23766A] text-lg font-medium">News</p>
                 </div>
                 <div>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -42,10 +42,11 @@
                 </div>
             </div>
             <div class="px-2">
-                <p class="text-[#23766A] text-base">UI/UX Designer | Web Developer</p>
+                <p class="text-[#23766A] text-base">Crops</p>
             </div>
             <div class="mt-2 font-normal text-sm">
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. mattis ligula consectetur ultrices mauris. Maecenas vitae mattis tellus..</p>
+                {{item.Description}}
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. mattis ligula consectetur ultrices mauris. Maecenas vitae mattis tellus..</p> -->
             </div>
         </div>
         

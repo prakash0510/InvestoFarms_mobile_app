@@ -1,11 +1,11 @@
 <div *ngIf="plotDetails" class=" flex flex-col overflow-y-auto overflow-hidden px-3 py-1 text-[#696969] bg-[#E6f4ea] h-[100vh]">
     <div class="mt-[3vh] flex ">
         <img class="back " src="../../../../assets/images/back.png" routerLink="/home/home-screen" alt="back">
-        <p class=" font-bold text-[18px] text-[#23766A]">{{plotDetails.name}}</p>
+        <p class=" font-bold text-[18px] text-[#23766A]">{{plotDetails[index]?.Name}}</p>
         <img class="h-[28px] w-auto absolute right-4 top-7" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
     </div>
     <div class="mt-[30px]  w-full">
-        <img [src]="plotDetails.image" alt="Plot Image" class="w-full object-cover mt-2">
+        <img [src]="'https://www.investofarms.com/'+plotDetails[index]?.Image_URL" alt="Plot Image" class="w-full object-cover mt-2">
     </div>
     <div class="flex flex-col mt-5">
         <div>
@@ -13,8 +13,8 @@
         </div>
         <div class="mt-2 smallphone:text-sm text-[#696969]">
             <p class="mt-2 smallphone:text-sm text-[#696969]">
-                {{ plotDetails.description | slice:0:50 }}
-                <span *ngIf="showMore">{{ plotDetails.description | slice:50 }}</span>
+                {{ plotDetails[index]?.Description | slice:0:50 }}
+                <span *ngIf="showMore">{{ plotDetails[index]?.Description | slice:50 }}</span>
             </p>
             
         </div>

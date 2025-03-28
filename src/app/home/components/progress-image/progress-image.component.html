@@ -1,21 +1,23 @@
 <div class="image-container mt-2 w-[100%] text-[#696969] h-fit">
   <div class="relative w-full overflow-hidden">
     <div #scrollContainer class="scroll-container flex gap-3 overflow-x-auto scrollbar-hide " (scroll)="onScroll()">
-      <div *ngFor="let item of plotDetailsList; let i = index" 
+      <div *ngFor="let item of projects; let i = index" 
           class="min-w-[94vw] max-w-[70vw] bg-green-200 p-1 rounded-lg shadow-lg flex-shrink-0 relative">
-        <img class="w-full h-fit object-cover rounded-lg" [src]="item.image" />
+        <img class="w-full h-fit object-cover rounded-lg" [src]="'https://www.investofarms.com/' + item.Image_URL" />
         <div class="bg-gray-100 p-2 mt-2 rounded-lg shadow-lg">
           <div class="flex justify-between">
-            <div><p class="font-bold">{{ item.name }}</p></div>
-            <div class="text-right"><p class="text-sm">Min Invest: {{ item.minInvest }}</p></div>
+            <div><p class="font-bold">{{ item.Name }}</p></div>
+            <div class="text-right"><p class="text-sm">Min Invest: {{ item.Min_Investment }}</p></div>
           </div>
           <div class="flex justify-between">
-            <div><p class="text-sm">{{ item.location }}</p><p class="text-sm">{{ item.area }}</p></div>
-            <div class="text-right"><p class="text-sm">Tenure: {{ item.tenure }}</p><p class="text-sm">Exp IRR: {{ item.expIRR }}</p></div>
+            <div><p class="text-sm">{{ item.Location }}</p><p class="text-sm">Area: {{ item.Area }}</p></div>
+            <div class="text-right"><p class="text-sm">Tenure: {{ item.Tenure }}</p><p class="text-sm">Exp IRR: {{ item.expIRR }}</p></div>
           </div>
         </div>
         <div>
-          <p class="text-[#23766A] text-[20px] font-bold underline text-center p-4" routerLink="/home/plot-details" (click)="viewDetails(item)">View Details</p>
+          <p class="text-[#23766A] text-[20px] font-bold underline text-center p-4"  [routerLink]="['/home/plot-details']"
+          [queryParams]="{ index: i }"
+          (click)="viewDetails(i)">>View Details</p>
         </div>
       </div>
     </div>
@@ -23,7 +25,7 @@
 
   <!-- Progress Dots -->
   <div class="flex justify-center mt-2 space-x-2">
-    <div *ngFor="let item of plotDetailsList; let i = index"
+    <div *ngFor="let item of projects; let i = index"
         class="h-3 w-3 rounded-full transition-all"
         [ngClass]="{'bg-green-700': currentIndex === i, 'bg-gray-300': currentIndex !== i}">
     </div>

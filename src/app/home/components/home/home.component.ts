@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -6,4 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css',
   standalone:false
 })
-export class HomeComponent {}
+export class HomeComponent {
+
+  news: any[]=[]
+
+  constructor(private authservice: AuthService){}
+
+  ngOnInit(): void {
+    this.fetchNews();
+  }
+
+  fetchNews(): void {
+    this.authservice.getProjects().subscribe((response: any) => {
+      
+      // console.log(localStorage.getItem('token'))
+      this.news = response.news; 
+    }, error => {
+      console.error('Error fetching projects:', error);
+    });
+  }
+}

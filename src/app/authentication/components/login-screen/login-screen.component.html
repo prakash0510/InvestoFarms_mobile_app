@@ -15,19 +15,19 @@
     </div>
 
     <!-- Content Section -->
-    <div class="content flex-grow pt-[200px] pb-[100px]">
+    <div class="content flex-grow pt-[200px] pb-[100px] overflow-y-auto overflow-hidden">
         <div *ngIf="!isSignInMode" class="form-wrapper mb-8">
             <div class="flex justify-center p-6 text-[30px] font-bold">
                 <p>Create An Account</p>
             </div>
-            <form (ngSubmit)="onSignUp($event)">
+            <form (ngSubmit)="onSignup()" #signupForm="ngForm">
                 <div class="px-5">
                     <div class="flex ">
                         <!-- <img class="px-2 p-2" src="../../../../assets/images/user.png" alt="">
                         <input type="text" placeholder="Full Name"> -->
                         <mat-form-field class="example-full-width w-[100%] h-[100%] ">
                             <mat-label class="text-[#23766A]">Full name</mat-label>
-                            <input matInput>
+                            <input matInput [(ngModel)]="SignupObj.Name" name="Name">
                           </mat-form-field>
                     </div>
                     <div class="">
@@ -36,15 +36,11 @@
                         <mat-form-field class="w-[100%] h-[100%]">
                             <mat-label class="text-[#23766A]">Enter your email</mat-label>
                             <input
-                              matInput
+                              matInput [(ngModel)]="SignupObj.Email" name="Email"
                               placeholder="pat@example.com"
-                              [formControl]="email"
-                              (blur)="updateErrorMessage()"
                               required
                             />
-                            @if (email.invalid) {
-                              <mat-error>{{errorMessage()}}</mat-error>
-                            }
+                           
                           </mat-form-field>
                     </div>
                     <div class="">
@@ -52,7 +48,7 @@
                         <input type="password" placeholder="Password"> -->
                         <mat-form-field class="w-[100%] h-[100%]">
                             <mat-label class="text-[#23766A]">Enter your password</mat-label>
-                            <input matInput [type]="hide() ? 'password' : 'text'" />
+                            <input matInput [(ngModel)]="SignupObj.Password"  name="Password"  />
                             <!-- <button
                               mat-icon-button
                               matSuffix
@@ -67,31 +63,46 @@
                     <div>
                         <mat-form-field class="example-full-width w-[100%]">
                             <mat-label class="text-[#23766A]">Phone Number</mat-label>
-                            <p matTextPrefix class="text-[#23766A]  ">+91 &nbsp;</p>
-                            <input type="tel" matInput placeholder="98765432XX">
+                            <p matTextPrefix class="text-[#23766A]">+91 &nbsp;</p>
+                            
+                            <input type="tel"
+                                   matInput
+                                   [(ngModel)]="SignupObj.Mobile_Number"
+                                   name="Mobile_Number"
+                                   #mobileField="ngModel"
+                                   placeholder="98765432XX"
+                                   required
+                                   pattern="^[6-9][0-9]{9}$" />
+                          
                             <mat-icon matSuffix>mode_edit</mat-icon>
+                          
+                            <mat-error *ngIf="mobileField.invalid && mobileField.touched">
+                              <span *ngIf="mobileField.errors?.['required']">Phone number is required.</span>
+                              <span *ngIf="mobileField.errors?.['pattern']">Enter a valid 10-digit mobile number.</span>
+                            </mat-error>
                           </mat-form-field>
+                          
                     </div>
                     <div>
                         <mat-form-field class="example-full-width w-full mr-2">
                           <mat-label class="text-[#23766A]">City</mat-label>
-                          <input matInput placeholder="Ex. San Francisco">
+                          <input matInput [(ngModel)]="SignupObj.City"  name="City"  placeholder="Ex. San Francisco">
                         </mat-form-field>
                       </div>
                       <div>
                         <mat-form-field class="example-full-width w-full">
                           <mat-label class="text-[#23766A]">State</mat-label>
-                          <input matInput placeholder="Ex. California">
+                          <input matInput [(ngModel)]="SignupObj.State"  name="State"  placeholder="Ex. California">
                         </mat-form-field>
                       </div>
                       <div>
                         <mat-form-field class="w-full ">
                         <mat-label class="text-[#23766A]">Postal Code</mat-label>
-                        <input matInput #postalCode  placeholder="Ex. 94105" >
+                        <input matInput [(ngModel)]="SignupObj.Pincode"  name="Pincode"  #postalCode  placeholder="Ex. 94105" >
                       </mat-form-field>
                     </div>
                     <div class="flex rounded-xl h-12 bg-[#23766A] text-white justify-center align-middle mx-[10%] mb-6">
-                        <button type="submit" (click)="onSignUp($event)">Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </div>
                     <div class="pt-4 w-auto flex justify-evenly ">
                         <p class="hr-lines  h-[2px] w-[100px] bg-black  translate-y-[10px]   mr-[2px]"></p>
@@ -116,31 +127,37 @@
             <div class="flex justify-center p-6 text-[30px] font-bold">
                 <p>Welcome Back!</p>
             </div>
-            <form (ngSubmit)="onSignIn($event)">
+            <form (ngSubmit)="onLogin()" #signInForm="ngForm">
                 <div class="px-5" >
                     <div class="flex rounded-lg mb-4">
                         <!-- <img class="px-2 p-2" src="../../../../assets/images/email.png" alt="">
                         <input type="email" placeholder="Email"> -->
                         <mat-form-field class="w-[100%] h-[100%]">
                             <mat-label class="text-[#23766A]">Enter your email</mat-label>
-                            <input
-                              matInput
-                              placeholder="pat@example.com"
-                              [formControl]="email"
-                              (blur)="updateErrorMessage()"
-                              required
-                            />
-                            @if (email.invalid) {
-                              <mat-error>{{errorMessage()}}</mat-error>
-                            }
+                            <input type="email"
+                                   matInput
+                                   placeholder="pat@example.com"
+                                   name="Email"
+                                   [(ngModel)]="loginObj.Email"
+                                   #emailField="ngModel"
+                                   required
+                                   email />
+                            <mat-error *ngIf="emailField.invalid && emailField.touched">
+                              <span *ngIf="emailField.errors?.['required']">Email is required.</span>
+                              <span *ngIf="emailField.errors?.['email']">Enter a valid email address.</span>
+                            </mat-error>
                           </mat-form-field>
+                          
                     </div>
                     <div class="flex  mb-4">
                         <!-- <img class="px-2 p-2" src="../../../../assets/images/padlock.png" alt="">
                         <input type="password" placeholder="Password"> -->
                         <mat-form-field class="w-[100%] h-[100%]">
                             <mat-label class="text-[#23766A]">Enter your password</mat-label>
-                            <input matInput [type]="hide() ? 'password' : 'text'" />
+                            <input matInput 
+                            name="Password"
+                            [(ngModel)]="loginObj.Password"
+                            />
                             <!-- <button
                               mat-icon-button
                               matSuffix
@@ -158,11 +175,11 @@
                             <span class="pl-1">Remember Password</span>
                         </div>
                         <div class=" text-[14px]">
-                            <p (click)="forgetpwd()">Forget Password?</p>
+                            <p (click)="forgetPass()">Forget Password?</p>
                         </div>
                     </div>
                     <div class="flex rounded-xl h-12 bg-[#23766A] text-white justify-center align-middle mx-[10%] mb-6">
-                        <button type="submit" (click)="onSignIn($event)">Sign In</button>
+                        <button type="submit" class="w-full">Sign In</button>
                     </div>
                     <div class="pt-4 w-auto flex justify-evenly ">
                         <p class="hr-lines  h-[2px] w-[100px] bg-black  translate-y-[10px]   mr-[2px]"></p>
@@ -184,7 +201,7 @@
     </div>
 
     <!-- Footer (Now Always Stays at Bottom) -->
-    <div class="footer z-10 fixed bottom-0 w-full  h-[100px]  rounded-t-[50px] bg-[#23766A] text-center text-white" (click)="goToSignIn()">   
+    <div class="footer z-10 fixed bottom-0 w-full  h-[100px]  rounded-t-[50px] bg-[#23766A] text-center text-white" >   
         <p class="p-3" >Already have an account</p>
     </div>
 </div>

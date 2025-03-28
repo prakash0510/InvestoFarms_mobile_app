@@ -15,15 +15,15 @@
                   hover:shadow-md active:shadow-md focus:shadow-md">
         <div class="flex items-center gap-3">
           <div>
-            <img src="assets/images/NotificationImage.svg" alt="Notification Icon"/>
+            <img class="h-auto w-14 rounded-2xl"  src="../../../../assets/images/AppIcon.jpg" alt="Notification Icon"/>
           </div>
           <div class="font-bold text-lg">
-            <p>{{ notification.title }}</p>
-            <p class="text-sm font-normal text-[#2e3b32]">{{ notification.description }}</p>
+            <p>{{ notification.Title }}</p>
+            <p class="text-sm font-normal text-[#2e3b32]">{{ notification.Message }}</p>
           </div>
         </div>
-        <div class="font-bold text-sm text-[#23766A]">
-          <p>{{ notification.time }}</p>
+        <div class="font-bold text-xs text-[#23766A]">
+          <p>{{notification.Created_At | dateFormat }}</p>
         </div>
       </div>
     </div>

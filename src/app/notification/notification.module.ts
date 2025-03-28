@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NotficationsRoutingModule } from './notification-routing.module';
+import { DateFormatPipe } from "../pipes/date-format.pipe";
 
 
 
@@ -10,7 +11,8 @@ import { NotficationsRoutingModule } from './notification-routing.module';
     NotificationsComponent
   ],
   imports: [
-    CommonModule, NotficationsRoutingModule
-  ]
+    CommonModule, NotficationsRoutingModule,
+    DateFormatPipe
+]
 })
 export class NotificationModule { }

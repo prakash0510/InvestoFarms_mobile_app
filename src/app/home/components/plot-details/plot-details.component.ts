@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { plotDetails } from '../../../../assets/constants/plotDetails';
+import { plotDetails,getPlotDetails } from '../../../../assets/constants/plotDetails';
+import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-plot-details',
   templateUrl: './plot-details.component.html',
@@ -8,17 +9,31 @@ import { plotDetails } from '../../../../assets/constants/plotDetails';
   standalone:false
 })
 export class PlotDetailsComponent implements OnInit{
-  plotDetails: any;
+  plotDetails=getPlotDetails()
+  project: any[]=[]
+  index: number = 0;
   showMore: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private authservice: AuthService) {}
 
-  ngOnInit(): void {
+  
+
+  
+  ngOnInit() {
+    this.fetchProjects();
     this.route.queryParams.subscribe(params => {
-      const plotId = params['id'] ? +params['id'] : null;
-      if (plotId !== null) {
-        this.plotDetails = plotDetails.find(plot => plot.id === plotId);
-      }
+      this.index = +params['index']; // Convert to number
+    });
+  }
+
+  fetchProjects(): void {
+    this.authservice.getProjects().subscribe((response: any) => {
+      
+      // console.log(localStorage.getItem('token'))
+      this.plotDetails = response.projects; 
+      // console.log([this.plotDetails])
+    }, error => {
+      console.error('Error fetching projects:', error);
     });
   }
 

@@ -4,7 +4,10 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 
 
@@ -12,17 +15,22 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot({preventDuplicates:true,}),
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    DateFormatPipe
    
     
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

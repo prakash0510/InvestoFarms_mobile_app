@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { plotDetails } from '../../../../assets/constants/plotDetails';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-progress-image',
@@ -10,13 +11,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProgressImageComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef;
-  plotDetailsList = plotDetails;
+
   autoScrollInterval: any;
   userScrollTimeout: any;
   isUserScrolling = false;
   currentIndex = 0; // Active card index
 
-  constructor(private router: Router, private renderer: Renderer2) {}
+  projects: any[]=[]
+  plotDetailsList = this.projects;
+
+  constructor(private router: Router, private renderer: Renderer2,private authservice: AuthService) {}
+
+  ngOnInit(): void {
+    this.fetchProjects();
+  }
+
+  fetchProjects(): void {
+    this.authservice.getProjects().subscribe((response: any) => {
+      this.projects = response.projects; // Assuming API returns { projects: [...] }
+    }, error => {
+      console.error('Error fetching projects:', error);
+    });
+  }
 
   ngAfterViewInit() {
     this.startAutoScroll();
@@ -70,10 +86,8 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
     this.currentIndex = Math.round(container.scrollLeft / cardWidth);
   }
 
-  viewDetails(item: any) {
-    if (item && item.id !== undefined) { // Ensure id=0 is handled
-      this.router.navigate(['/home/plot-details'], { queryParams: { id: item.id } });
-    }
+  viewDetails(index: number) {
+    this.router.navigate(['/home/plot-details'], { queryParams: { index } });
   }
 
   ngOnDestroy() {
