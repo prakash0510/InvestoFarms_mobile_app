@@ -30,7 +30,7 @@ export class NotificationsComponent implements OnInit {
   fetchNotifications(){
     this.authservice.getNotifications().subscribe((response: any) => {
       
-      console.log(localStorage.getItem('token'))
+      // console.log(localStorage.getItem('token'))
       this.notifications = response.data.notifications; 
     }, error => {
       console.error('Error fetching projects:', error);

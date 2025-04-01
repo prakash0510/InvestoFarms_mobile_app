@@ -40,4 +40,20 @@ getNotifications():Observable<any>{
   return this.http.get<any>(`${this.apiUrl}/notifications/`);
 }
 
+getOtp(email: string):Observable<any>{
+  return this.http.get<any>(`${this.apiUrl}/send_otp?email=${encodeURIComponent(email)}`);
+}
+
+verifyOtp(email: string, otp: string){
+  return this.http.get<any>(`${this.apiUrl}/verify_otp?email=${encodeURIComponent(email)}&otp=${otp}`)
+}
+
+updatePassword(data: any){
+  return this.http.put<any>(`${this.apiUrl}/users/update-password`,data)
+}
+feedback(UserID: number,rating: number, comment: string){
+  const body = JSON.stringify({UserID,rating, comment});
+  console.log(body)
+  return this.http.post<any>(`${this.apiUrl}/feedback`,body)
+}
 }

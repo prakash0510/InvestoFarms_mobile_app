@@ -5,6 +5,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { PlotDetailsComponent } from './components/plot-details/plot-details.component';
 import { ProgressImageComponent } from './components/progress-image/progress-image.component';
+import { CropCardComponent } from "./components/crop-cycle/crop-cycle.component";
+// import { CropCycleComponent } from "./components/crop-cycle/crop-cycle.component";
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { ProgressImageComponent } from './components/progress-image/progress-ima
   imports: [
     CommonModule,
     HomeRoutingModule,
+    CropCardComponent
 ]
 })
 export class HomeModule { }

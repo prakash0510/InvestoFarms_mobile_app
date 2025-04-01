@@ -11,13 +11,13 @@
           </div>
           <div class="flex justify-between">
             <div><p class="text-sm">{{ item.Location }}</p><p class="text-sm">Area: {{ item.Area }}</p></div>
-            <div class="text-right"><p class="text-sm">Tenure: {{ item.Tenure }}</p><p class="text-sm">Exp IRR: {{ item.expIRR }}</p></div>
+            <div class="text-right"><p class="text-sm">Tenure: {{ item.Tenure }}</p><p class="text-sm">Exp IRR: 3 {{ item.expIRR }}</p></div>
           </div>
         </div>
         <div>
           <p class="text-[#23766A] text-[20px] font-bold underline text-center p-4"  [routerLink]="['/home/plot-details']"
           [queryParams]="{ index: i }"
-          (click)="viewDetails(i)">>View Details</p>
+          (click)="viewDetails(i)">View Details</p>
         </div>
       </div>
     </div>

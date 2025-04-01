@@ -8,9 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { DateFormatPipe } from './pipes/date-format.pipe';
-
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,10 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DateFormatPipe
+    DateFormatPipe,
+    MatCardModule, 
+    MatTableModule,
+    CommonModule
    
     
   ],

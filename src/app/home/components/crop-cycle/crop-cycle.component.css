@@ -1,0 +1,123 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f0f4f8;
+  }
+.futuristic-card {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #1e2a47, #3a4a6b);
+    color: #fff;
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  .card-header {
+    display: flex;
+    background: #232f44;
+    width: 100%;
+    padding: 16px;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-title {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    text-align: center ;
+    justify-content: center;
+    flex: 1;
+  }
+  
+  .card-content {
+    padding: 20px;
+    overflow: hidden;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .table-container {
+    display: inline-block;
+    min-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .futuristic-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 12px;
+  }
+  
+  .futuristic-table th, .futuristic-table td {
+    padding: 12px 20px;
+    text-align: center;
+    border: 1px solid #3e4c71;
+    transition: all 0.3s ease;
+  }
+  
+  .futuristic-table th {
+    background: #2b3d5c;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+  
+  .futuristic-table td {
+    background: #374d6b;
+    color: #e2e9f0;
+    font-size: 0.9rem;
+  }
+  
+  .futuristic-table tr:hover {
+    background: rgba(0, 153, 255, 0.1);
+    cursor: pointer;
+  }
+  
+  .futuristic-table td:hover {
+    background: rgba(0, 153, 255, 0.2);
+  }
+  
+  .futuristic-table th, .futuristic-table td {
+    border-top: 1px solid #3b4c6c;
+  }
+  
+  .futuristic-table th:first-child, .futuristic-table td:first-child {
+    padding-left: 20px;
+  }
+  
+  .futuristic-table th:last-child, .futuristic-table td:last-child {
+    padding-right: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .futuristic-table th, .futuristic-table td {
+      font-size: 0.8rem;
+      padding: 10px 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .futuristic-card {
+      padding: 15px;
+    }
+  
+    .card-title {
+      font-size: 1.4rem;
+    }
+  
+    .futuristic-table th, .futuristic-table td {
+      padding: 8px 12px;
+    }
+  
+    .table-wrapper {
+      margin-bottom: 20px;
+    }
+  }

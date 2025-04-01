@@ -5,6 +5,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AboutComponent } from './components/about/about.component';
 import { OurMissionComponent } from './components/our-mission/our-mission.component';
 import { AccountComponent } from './components/account/account.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'account-details',
     component: AccountComponent,
+  },
+  {
+    path: 'feedback',
+    component: FeedbackComponent,
   }
 ];
 

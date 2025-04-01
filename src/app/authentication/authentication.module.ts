@@ -19,10 +19,10 @@ import { RestPasswordComponent } from './components/rest-password/rest-password.
     CarousalScreen1Component,
     CarousalScreen2Component,
     SignUpScreenComponent,
-    ForgetPasswordScreenComponent,
+    // ForgetPasswordScreenComponent,
     CarousalScreen3Component,
-    OtpForgotPasswordComponent,
-    RestPasswordComponent
+    // OtpForgotPasswordComponent,
+    // RestPasswordComponent
   ],
   imports: [
     CommonModule,

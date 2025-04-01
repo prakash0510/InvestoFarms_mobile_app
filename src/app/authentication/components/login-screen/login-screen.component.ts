@@ -46,6 +46,8 @@ http= inject(HttpClient)
 onLogin(){
   this.authservice.login(this.loginObj.Email,this.loginObj.Password).subscribe((res:any)=>{
    localStorage.setItem('token',res.access_token)
+   localStorage.setItem('UserID',res.user.id)
+   console.log("UserID",res.user.id)
    this.router.navigateByUrl('/home/home-screen')
   }, error=>{
     alert('Wrong credentials')
