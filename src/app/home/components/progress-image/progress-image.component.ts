@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
-import { plotDetails } from '../../../../assets/constants/plotDetails';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
@@ -17,21 +16,23 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
   isUserScrolling = false;
   currentIndex = 0; // Active card index
 
-  projects: any[]=[]
-  plotDetailsList = this.projects;
+  projects: any[] = [];
 
-  constructor(private router: Router, private renderer: Renderer2,private authservice: AuthService) {}
+  constructor(private router: Router, private renderer: Renderer2, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.fetchProjects();
   }
 
   fetchProjects(): void {
-    this.authservice.getProjects().subscribe((response: any) => {
-      this.projects = response.projects; // Assuming API returns { projects: [...] }
-    }, error => {
-      console.error('Error fetching projects:', error);
-    });
+    this.authService.getProjects().subscribe(
+      (response: any) => {
+        this.projects = response.projects; // Assuming API returns { projects: [...] }
+      },
+      (error) => {
+        console.error('Error fetching projects:', error);
+      }
+    );
   }
 
   ngAfterViewInit() {
@@ -40,24 +41,21 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
   }
 
   startAutoScroll() {
-    this.stopAutoScroll();
-
+    this.stopAutoScroll(); // Clear any existing interval
+  
     this.autoScrollInterval = setInterval(() => {
-      if (!this.isUserScrolling) {
+      if (!this.isUserScrolling && this.scrollContainer) {
         const container = this.scrollContainer.nativeElement;
-        const cardWidth = container.clientWidth;
-        const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
-        if (container.scrollLeft < maxScrollLeft) {
-          container.scrollLeft += cardWidth;
-          this.currentIndex = Math.round(container.scrollLeft / cardWidth);
-        } else {
-          container.scrollLeft = 0;
-          this.currentIndex = 0;
+        const cards = container.children; // Get all child elements (cards)
+  
+        if (cards.length > 0) {
+          this.currentIndex = (this.currentIndex + 1) % cards.length;
+          cards[this.currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
       }
     }, 3000);
   }
+  
 
   stopAutoScroll() {
     if (this.autoScrollInterval) {
@@ -74,10 +72,11 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
       clearTimeout(this.userScrollTimeout);
     }
 
+    // Restart auto-scroll after 5 seconds of inactivity
     this.userScrollTimeout = setTimeout(() => {
       this.isUserScrolling = false;
       this.startAutoScroll();
-    }, 5000);
+    }, 3000);
   }
 
   updateCurrentIndex() {
@@ -86,8 +85,8 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
     this.currentIndex = Math.round(container.scrollLeft / cardWidth);
   }
 
-  viewDetails(index: number) {
-    this.router.navigate(['/home/plot-details'], { queryParams: { index } });
+  viewDetails(projectId: string) {
+    this.router.navigate(['/home/plot-details'], { queryParams: { id: projectId } });
   }
 
   ngOnDestroy() {

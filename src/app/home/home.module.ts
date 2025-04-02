@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { PlotDetailsComponent } from './components/plot-details/plot-details.component';
@@ -10,15 +9,15 @@ import { CropCardComponent } from "./components/crop-cycle/crop-cycle.component"
 
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    PlotDetailsComponent,
-    ProgressImageComponent
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    CropCardComponent
+declarations: [
+  HomeComponent,
+  PlotDetailsComponent,
+  ProgressImageComponent
+],
+imports: [
+  CommonModule,
+  HomeRoutingModule,
+  CropCardComponent
 ]
 })
 export class HomeModule { }

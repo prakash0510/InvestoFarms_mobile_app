@@ -1,8 +1,8 @@
 <div class="image-container mt-2 w-[100%] text-[#696969] h-fit">
-  <div class="relative w-full overflow-hidden">
-    <div #scrollContainer class="scroll-container flex gap-3 overflow-x-auto scrollbar-hide " (scroll)="onScroll()">
+  <div class="relative w-full overflow-hidden scrollbar-hide">
+    <div #scrollContainer class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-4 w-full scrollbar-hide" (scroll)="onScroll()">
       <div *ngFor="let item of projects; let i = index" 
-          class="min-w-[94vw] max-w-[70vw] bg-green-200 p-1 rounded-lg shadow-lg flex-shrink-0 relative">
+          class="flex-shrink-0 snap-start w-full max-w-[90%] md:max-w-[80%] lg:max-w-[70%] bg-white shadow-md rounded-xl p-4 scrollbar-hide">
         <img class="w-full h-fit object-cover rounded-lg" [src]="'https://www.investofarms.com/' + item.Image_URL" />
         <div class="bg-gray-100 p-2 mt-2 rounded-lg shadow-lg">
           <div class="flex justify-between">
@@ -15,9 +15,10 @@
           </div>
         </div>
         <div>
-          <p class="text-[#23766A] text-[20px] font-bold underline text-center p-4"  [routerLink]="['/home/plot-details']"
-          [queryParams]="{ index: i }"
-          (click)="viewDetails(i)">View Details</p>
+          <p class="text-[#23766A] text-[20px] font-bold underline text-center p-4"  
+            [routerLink]="['/home/plot-details']"  
+            [queryParams]="{ id: projects[i]?.id }">View Details
+          </p>          
         </div>
       </div>
     </div>
@@ -30,11 +31,24 @@
         [ngClass]="{'bg-green-700': currentIndex === i, 'bg-gray-300': currentIndex !== i}">
     </div>
   </div>
-
-  
 </div>
 
+
 <style>
+  /* Hide scrollbar for Chrome, Safari */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scroll-container {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Edge */
+.scroll-container {
+  -ms-overflow-style: none;
+}
 
 .progress-image-container {
   overflow-x: auto; /* Enables horizontal scrolling */
