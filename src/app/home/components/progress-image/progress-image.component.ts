@@ -86,8 +86,8 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
     this.currentIndex = Math.round(container.scrollLeft / cardWidth);
   }
 
-  viewDetails(projectId: string) {
-    this.router.navigate(['/home/plot-details'], { queryParams: { id: projectId } });
+  viewDetails(index: number) {
+    this.router.navigate(['/home/plot-details'], { queryParams: { index } });
   }
 
   ngOnDestroy() {
