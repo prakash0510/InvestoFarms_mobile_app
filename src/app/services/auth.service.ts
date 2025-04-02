@@ -32,7 +32,7 @@ onSignup(Name: string, Email: string, Mobile_Number: number,City: string, State:
  return this.http.post<any>(`${this.apiUrl}/users/signup`,body,{headers})
 }
 
-getProjects():Observable<any>{
+ getProjects():Observable<any>{
   return this.http.get<any>(`https://investofarm-backend.onrender.com/api/projects/`);
 }
 

@@ -39,7 +39,7 @@ export class PlotDetailsComponent implements OnInit{
       this.cropsExp=response.crops_expenses; 
 
       console.log(this.cropsExp)
-      // console.log([this.plotDetails])
+      console.log([this.plotDetails])
     }, error => {
       console.error('Error fetching projects:', error);
     });

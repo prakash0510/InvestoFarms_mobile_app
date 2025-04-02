@@ -28,6 +28,7 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
     this.authService.getProjects().subscribe(
       (response: any) => {
         this.projects = response.projects; // Assuming API returns { projects: [...] }
+        console.log(this.projects);
       },
       (error) => {
         console.error('Error fetching projects:', error);
