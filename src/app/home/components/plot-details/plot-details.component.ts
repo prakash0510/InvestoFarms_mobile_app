@@ -12,11 +12,11 @@ import { AuthService } from '../../../services/auth.service';
 
 export class PlotDetailsComponent implements OnInit{
   plotDetails=getPlotDetails()
-  crops:any []= []
-  project: any[]=[]
+  crops:any []= getPlotDetails().crops
+  project: any[]=getPlotDetails().projects
   index: number = 0;
   showMore: boolean = false;
-  cropsExp: any;
+  cropsExp: any[]=getPlotDetails().crops_expenses;
 
   constructor(private route: ActivatedRoute,private authservice: AuthService) {}
 
@@ -31,18 +31,15 @@ export class PlotDetailsComponent implements OnInit{
   }
 
   fetchProjects(): void {
-    this.authservice.getProjects().subscribe((response: any) => {
+    // this.authservice.getProjects().subscribe((response: any) => {
       
       // console.log(localStorage.getItem('token'))
-      this.plotDetails = response.projects;
-      this.crops=response.crops; 
-      this.cropsExp=response.crops_expenses; 
+      this.plotDetails = getPlotDetails().projects;
+      this.crops=getPlotDetails().crops; 
+      this.cropsExp=getPlotDetails().crops_expenses; 
 
       console.log(this.cropsExp)
       console.log([this.plotDetails])
-    }, error => {
-      console.error('Error fetching projects:', error);
-    });
   }
 
   toggleReadMore() {

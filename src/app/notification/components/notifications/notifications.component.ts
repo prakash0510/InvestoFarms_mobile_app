@@ -8,6 +8,7 @@ import { AuthService } from '../../../services/auth.service';
   standalone:false
 })
 export class NotificationsComponent implements OnInit {
+  loading: boolean = true;
   notifications:any[] = [
     { id: 1, title: "Title 1", description: "Notification 1 description goes here.", time: "4:00 PM" },
     { id: 2, title: "Title 2", description: "Notification 2 description goes here.", time: "5:00 PM" },
@@ -28,12 +29,17 @@ export class NotificationsComponent implements OnInit {
   }
 
   fetchNotifications(){
+    this.loading= true;
     this.authservice.getNotifications().subscribe((response: any) => {
       
       // console.log(localStorage.getItem('token'))
       this.notifications = response.data.notifications; 
+    this.loading= false;
+
     }, error => {
       console.error('Error fetching projects:', error);
+    this.loading= false;
+
     });
   }
 

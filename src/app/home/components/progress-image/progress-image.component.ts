@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { getPlotDetails } from '../../../../assets/constants/plotDetails';
 
 @Component({
   selector: 'app-progress-image',
@@ -16,25 +17,25 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
   isUserScrolling = false;
   currentIndex = 0; // Active card index
 
-  projects: any[] = [];
+  projects: any[] = getPlotDetails().projects;
 
   constructor(private router: Router, private renderer: Renderer2, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.fetchProjects();
+    // this.fetchProjects();
   }
 
-  fetchProjects(): void {
-    this.authService.getProjects().subscribe(
-      (response: any) => {
-        this.projects = response.projects; // Assuming API returns { projects: [...] }
-        console.log(this.projects);
-      },
-      (error) => {
-        console.error('Error fetching projects:', error);
-      }
-    );
-  }
+  // fetchProjects(): void {
+  //   this.authService.getProjects().subscribe(
+  //     (response: any) => {
+  //       this.projects = response.projects; // Assuming API returns { projects: [...] }
+  //       console.log(this.projects);
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching projects:', error);
+  //     }
+  //   );
+  // }
 
   ngAfterViewInit() {
     this.startAutoScroll();

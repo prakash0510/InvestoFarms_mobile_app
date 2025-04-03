@@ -51,9 +51,7 @@ verifyOtp(email: string, otp: string){
 updatePassword(data: any){
   return this.http.put<any>(`${this.apiUrl}/users/update-password`,data)
 }
-feedback(UserID: number,rating: number, comment: string){
-  const body = JSON.stringify({UserID,rating, comment});
-  console.log(body)
-  return this.http.post<any>(`${this.apiUrl}/feedback`,body)
+feedback(feedback: any): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/feedback`,feedback)
 }
 }
