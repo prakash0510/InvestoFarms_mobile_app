@@ -1,54 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { plotDetails,getPlotDetails } from '../../../../assets/constants/plotDetails';
 import { AuthService } from '../../../services/auth.service';
+
+
 @Component({
   selector: 'app-plot-details',
   templateUrl: './plot-details.component.html',
   styleUrl: './plot-details.component.css',
-  standalone:false
+  standalone: false
 })
-
-
-export class PlotDetailsComponent implements OnInit{
-  plotDetails=getPlotDetails()
-  crops:any []= []
-  project: any[]=[]
+export class PlotDetailsComponent implements OnInit {
+  plotDetails: any[] = [];
+  // crops: any[] = [];
+  // cropsExp: any[] = [];
   index: number = 0;
   showMore: boolean = false;
-  cropsExp: any;
 
-  constructor(private route: ActivatedRoute,private authservice: AuthService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
-  
-
-  
   ngOnInit() {
-    this.fetchProjects();
     this.route.queryParams.subscribe(params => {
       this.index = +params['index']; // Convert to number
     });
-  }
 
-  fetchProjects(): void {
-    this.authservice.getProjects().subscribe((response: any) => {
-      
-      // console.log(localStorage.getItem('token'))
-      this.plotDetails = response.projects;
-      this.crops=response.crops; 
-      this.cropsExp=response.crops_expenses; 
+    this.plotDetails = this.authService.getProjects();
+    // this.crops = this.authService.getCrops();
+    // this.cropsExp = this.authService.getCropExpenses();
 
-      console.log(this.cropsExp)
-      console.log([this.plotDetails])
-    }, error => {
-      console.error('Error fetching projects:', error);
-    });
+    // console.log("Plot details:", this.plotDetails);
+    // console.log("Crops:", this.crops);
+    // console.log("Crop Expenses:", this.cropsExp);
   }
 
   toggleReadMore() {
     this.showMore = !this.showMore;
-  }
-    
+  }  
   cleanExpenseType(expenseType: string): any {
     try {
       return JSON.parse(expenseType.replace(/\\"/g, '"'));
@@ -57,5 +46,4 @@ export class PlotDetailsComponent implements OnInit{
       return null;
     }
   }
-  
 }

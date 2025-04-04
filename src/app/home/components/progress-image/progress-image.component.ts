@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild }
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
+
 @Component({
   selector: 'app-progress-image',
   templateUrl: './progress-image.component.html',
@@ -21,20 +22,10 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
   constructor(private router: Router, private renderer: Renderer2, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.fetchProjects();
+    this.projects = this.authService.getProjects()
   }
 
-  fetchProjects(): void {
-    this.authService.getProjects().subscribe(
-      (response: any) => {
-        this.projects = response.projects; // Assuming API returns { projects: [...] }
-        console.log(this.projects);
-      },
-      (error) => {
-        console.error('Error fetching projects:', error);
-      }
-    );
-  }
+  
 
   ngAfterViewInit() {
     this.startAutoScroll();
@@ -43,7 +34,6 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
 
   startAutoScroll() {
     this.stopAutoScroll(); // Clear any existing interval
-  
     this.autoScrollInterval = setInterval(() => {
       if (!this.isUserScrolling && this.scrollContainer) {
         const container = this.scrollContainer.nativeElement;
