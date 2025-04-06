@@ -1,51 +1,30 @@
-<!-- <mat-card class="futuristic-card">
-    <mat-card-header>
-      <mat-card-title>Crop Expenses</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="table-container overflow-x-auto">
-        <table mat-table [dataSource]="crops" class="mat-elevation-z8">
-  
-          <ng-container matColumnDef="crop">
-            <th mat-header-cell *matHeaderCellDef> Crop Name </th>
-            <td mat-cell *matCellDef="let crop"> {{ crop.Name }} </td>
-          </ng-container>
-  
-          <ng-container *ngFor="let column of displayedColumns.slice(1)" [matColumnDef]="column">
-            <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
-            <td mat-cell *matCellDef="let crop">
-              {{ expensesMap[crop.ID]?.[column] || '-' }}
-            </td>
-          </ng-container>
-  
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      </div>
-    </mat-card-content>
-  </mat-card> -->
-  <mat-card class="futuristic-card">
-    <mat-card-header fxLayout="row" fxLayoutAlign="center center">
-      <mat-card-title>Crop Expenses</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="table-wrapper overflow-x-auto">
-        <div class="table-container">
-          <table mat-table [dataSource]="crops" class="mat-elevation-z8 futuristic-table">
-            <ng-container matColumnDef="crop">
-              <th mat-header-cell *matHeaderCellDef>Crop Name</th>
-              <td mat-cell *matCellDef="let crop">{{ crop.Name }}</td>
-            </ng-container>
-  
-            <ng-container *ngFor="let column of displayedColumns.slice(1)" [matColumnDef]="column">
-              <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-              <td mat-cell *matCellDef="let crop">{{ expensesMap[crop.ID]?.[column] || '-' }}</td>
-            </ng-container>
-  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+<mat-card class="futuristic-card">
+  <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+    <mat-card-title class="mb-5"> Crop Expenses</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-wrapper overflow-x-auto">
+      <table mat-table [dataSource]="crops" class="mat-elevation-z8 futuristic-table center-cells align-middle" >
+
+        <!-- Crop Name Column -->
+        <ng-container matColumnDef="crop">
+          <th mat-header-cell *matHeaderCellDef> Crop Name </th>
+          <td mat-cell *matCellDef="let crop"> {{ crop.Name }} </td>
+        </ng-container>
+
+        <!-- Dynamic Expense Columns -->
+        <ng-container *ngFor="let column of displayedColumns.slice(1)" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+          <td mat-cell *matCellDef="let crop" style="text-align: center;">
+            {{ expensesMap[crop.ID]?.[column] || '-' }}
+          </td>
+        </ng-container>
+
+        <!-- Table Headers & Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
