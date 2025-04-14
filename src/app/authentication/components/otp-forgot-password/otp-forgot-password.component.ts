@@ -1,16 +1,20 @@
-import { Component, ElementRef, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-otp-forgot-password',
   templateUrl: './otp-forgot-password.component.html',
   styleUrl: './otp-forgot-password.component.css',
   standalone:true,
-  imports:[FormsModule],
+  imports:[FormsModule,NgIf],
+  encapsulation: ViewEncapsulation.None,
 })
 export class OtpForgotPasswordComponent {
+  loading: boolean = false;
   otp: string[] = ['', '', '', '', '', ''];
   email=localStorage.getItem('email')
 
@@ -23,7 +27,7 @@ export class OtpForgotPasswordComponent {
 
   otpRefs: any;
 
-  constructor(private authservice: AuthService,private router:Router) {}
+  constructor(private authservice: AuthService,private router:Router,private toastr: ToastrService) {}
 
   ngAfterViewInit() {
     this.otpRefs = [this.otp1, this.otp2, this.otp3, this.otp4, this.otp5, this.otp6];
@@ -45,23 +49,34 @@ export class OtpForgotPasswordComponent {
     const otpValue = this.otp.join('');
     if (otpValue.length < 6) {
       console.log('Please enter a complete OTP');
+      this.toastr.warning("Enter OTP")
       return;
     }
 
     console.log('Entered OTP:', otpValue);
+    this.loading= true;
     this.authservice.verifyOtp(this.email??'', otpValue).subscribe(
       (res: any) => {
         console.log('OTP verified successfully');
         this.router.navigateByUrl("Rest-password")
+        this.toastr.success("OTP verified!")
+        this.loading= false;
       },
       (error) => {
         console.error('OTP verification failed', error);
+        this.loading= false;
+
+
       }
     );
   }
 
   resendOtp() {
-    console.log('Resending OTP...');
+    this.authservice.getOtp(this.email??'').subscribe((res:any)=>{
+
+      console.log('Resending OTP...');
+    })
+    ;
 
     // Call your API to resend OTP
   }

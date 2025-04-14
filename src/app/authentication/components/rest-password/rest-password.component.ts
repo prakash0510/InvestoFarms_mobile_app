@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rest-password',
@@ -17,7 +18,11 @@ export class RestPasswordComponent {
     confirmPassword: '',
   };
 
-  constructor(private authService: AuthService, private router:Router) {}
+  constructor(private authService: AuthService, private router:Router,private toastr:ToastrService) {}
+
+  navigateToForgetpwd(){
+    this.router.navigateByUrl('/Forget-password')
+  }
 
   updatePassword() {
     console.log(this.passwordObj); // Debugging
@@ -48,6 +53,7 @@ export class RestPasswordComponent {
     this.authService.updatePassword(requestData).subscribe(
       (res: any) => {
         console.log('Password updated successfully');
+        this.toastr.success("Password Updated")
         alert('Password updated successfully!');
         this.router.navigateByUrl('/Login')
       },

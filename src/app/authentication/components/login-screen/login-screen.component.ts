@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthStateService } from '../../auth-state.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../services/auth.service';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 @Component({
   selector: 'app-login-screen',
   templateUrl: './login-screen.component.html',
@@ -42,9 +43,32 @@ SignupObj: any={
 
 isSignInMode=true;
 
-constructor(private authservice: AuthService,private router:Router){}
+constructor(private authservice: AuthService,private router:Router,  private socialAuthService: SocialAuthService, private route: ActivatedRoute ){}
 
 http= inject(HttpClient)
+ngOnInit(): void {
+  // Check for query param like ?signup=true
+  this.route.queryParams.subscribe(params => {
+    if (params['signup'] === 'true') {
+      this.isSignInMode = false; // Show sign-up view
+    }
+  });
+}
+
+
+signInWithGoogle(): void {
+  // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
+  //   const idToken = user.idToken;
+
+  //   // Send this token to your backend via your AuthService
+  //   this.authService.googleLogin(idToken).subscribe((res: any) => {
+  //     localStorage.setItem('token', res.access_token);
+  //     this.router.navigateByUrl('/home/home-screen');
+  //   });
+  // });
+}
+
+
 
 onLogin(){
   // this.loading= true;

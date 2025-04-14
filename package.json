@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@abacritt/angularx-social-login": "^2.3.0",
     "@angular/animations": "^19.2.1",
     "@angular/cdk": "^19.2.2",
     "@angular/common": "^19.2.0",
@@ -26,6 +27,7 @@
     "@capacitor/core": "^7.0.1",
     "@capacitor/ios": "^7.0.1",
     "@capacitor/keyboard": "^7.0.0",
+    "@react-oauth/google": "^0.12.1",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tailwind-scrollbar-hide": "^2.0.0",
