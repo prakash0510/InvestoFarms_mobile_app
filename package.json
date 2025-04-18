@@ -28,6 +28,7 @@
     "@capacitor/ios": "^7.0.1",
     "@capacitor/keyboard": "^7.0.0",
     "@react-oauth/google": "^0.12.1",
+    "capacitor-razorpay": "github:razorpay/razorpay-capacitor",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tailwind-scrollbar-hide": "^2.0.0",
