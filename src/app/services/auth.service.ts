@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'https://investofarm-backend.onrender.com/api'; // Your API endpoint
+  private apiUrl = 'http://43.204.235.152:8000/api'; // Your API endpoint
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -53,5 +53,14 @@ updatePassword(data: any){
 }
 feedback(feedback: any): Observable<any> {
   return this.http.post<any>(`${this.apiUrl}/feedback`,feedback)
+}
+googleLogin(idToken: string): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}users/google-login`, { idToken });
+}
+submitBankDetails(details:any){
+  return this.http.post<any>(`${this.apiUrl}/users/add-bank-details`,details)
+}
+submitNomineeDetails(details:any){
+  return this.http.post<any>(`${this.apiUrl}/users/add-nominee-details`,details)
 }
 }

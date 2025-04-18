@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { SocialLoginModule, SocialAuthServiceConfig, SocialAuthService } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { OAuthModule} from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
     MatCardModule, 
     MatTableModule,
     CommonModule,
-    SocialLoginModule
+    SocialLoginModule,
+    OAuthModule.forRoot(),
    
     
   ],
@@ -42,7 +44,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
       providers: [
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('398180835654-7kc5dcugmn7hpm99r55jh2l40mugnu4k.apps.googleusercontent.com')
+          provider: new GoogleLoginProvider('220724747894-9rns853pmgavt1ik84r66caq4qng2k84.apps.googleusercontent.com')
         }
       ]
     } as SocialAuthServiceConfig,

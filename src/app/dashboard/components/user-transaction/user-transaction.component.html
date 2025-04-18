@@ -29,16 +29,28 @@
             VIEW ALL-->
         </div>
     </div>
-    <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">
+    <div *ngIf="alltransac">
+
+        <div  class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]" *ngFor="let item of alltransactions">
+            <div >
+                <p>{{item.Name}}</p>
+                <P>18/09/2024 | Razorpay ID</P>
+            </div>
+            <div class="text-[#23766A] text-xl">
+                <P>2500></P>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]" *ngFor="let item of transactions">
         <div>
-            <p>PROJECT NAME1</p>
+            <p>{{item.Name}}</p>
             <P>18/09/2024 | Razorpay ID</P>
         </div>
         <div class="text-[#23766A] text-xl">
             <P>2500></P>
         </div>
     </div>
-    <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">
+    <!-- <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">
         <div>
             <p>PROJECT NAME2</p>
             <P>18/09/2024 | Razorpay ID</P>
@@ -64,6 +76,6 @@
         <div class="text-[#23766A] text-xl">
             <P>2500></P>
         </div>
-    </div> 
+    </div>  -->
     <div class="h-[150px] w-[100%]"></div>
 </div>

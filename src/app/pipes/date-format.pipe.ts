@@ -32,7 +32,7 @@ export class DateFormatPipe implements PipeTransform {
       return `Yesterday at ${formattedTime}`;
     } else {
       const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
-      return `${inputDate.toLocaleDateString(undefined, options)} at ${formattedTime}`;
+      return `${inputDate.toLocaleDateString(undefined, options)} - ${formattedTime}`;
     }
   }
 }

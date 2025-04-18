@@ -7,7 +7,7 @@ import { setPlotDetails, plotDetails } from '../../assets/constants/plotDetails'
   providedIn: 'root'
 })
 export class PlotService {
-  private apiUrl = 'https://investofarm-backend.onrender.com/api/projects/'; // Replace with your API URL
+  private apiUrl = 'http://43.204.235.152:8000/api/projects/'; // Replace with your API URL
 
   constructor(private http: HttpClient) {}
 

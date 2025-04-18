@@ -11,6 +11,9 @@ const routes: Routes = [
   {
     path: 'plot-details',
     component: PlotDetailsComponent
+  },
+  { path: 'plot-details/:id',
+     component: PlotDetailsComponent 
   }
 ];
 
