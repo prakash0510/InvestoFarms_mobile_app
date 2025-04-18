@@ -13,22 +13,22 @@ export class RazorpayService {
 
   createOrder(amount: number) {
     const payload = {
-      "amount": amount, // Amount in paise
+      "amount": amount,
       "currency": "INR"
   }
     return this.http.post<any>(`${this.BASE_URL}/orders`,payload);
-    console.log("Order created successfully",Response);
+
   }
 
   async openCheckout(order: any): Promise<any> {
     const options = {
-      key: 'rzp_test_3QUMYEmhprdtt8',
+      key: 'rzp_live_AkDBdW70PlCJ4T',
       amount: order.amount.toString(),
       currency: "INR",
       name: 'Investofarm',
       image: '../../../../assets/images/output-onlinepngtools.png',
       description: 'Payment',
-      order_id: order,
+      order_id: order.order_id,
       prefill: {
         name: 'Test User',
         email: 'test@example.com',
