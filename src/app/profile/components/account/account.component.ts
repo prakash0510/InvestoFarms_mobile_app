@@ -28,6 +28,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class AccountComponent {
   showNavigation = true;
   isKeyboardOpen = false;
+  storedUser = localStorage.getItem('userDetails');
+  user = this.storedUser ? JSON.parse(this.storedUser) : null;
 
   @ViewChild('formContainer') formContainer!: ElementRef;
 
@@ -56,6 +58,7 @@ export class AccountComponent {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   constructor(private router: Router) {
+    console.log("user details from Parsing: ",this.user)
     Keyboard.addListener('keyboardDidShow', () => {
       this.showNavigation = false;
     });

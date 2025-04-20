@@ -1,4 +1,4 @@
-<div class="flex flex-col  overflow-y-auto overflow-hidden  text-[#696969] bg-[#E6f4ea] h-[100vh] pb-[100px]">
+<div class="flex flex-col   text-[#696969] bg-[#E6f4ea] h-[100vh] pb-[100px]">
     <header class="flex bg-[#23766A] rounded-b-xl shadow-xl justify-between w-[100%] items-center relative">
         <div class="title m-4 ">
           <h2 class="text-[30px] text-[#B3DDC0] font-bold pl-2 underline-offset-4">Dashboard</h2>
@@ -9,7 +9,7 @@
       <br>
       
         </header>   
-        <div class="mx-3">
+        <div class="mx-3 overflow-y-auto overflow-hidden">
             <div>
                 <div class="h-[80%] bg-[#23766A] mt-4 rounded-xl pb-6 ">
                     <div class="">
@@ -19,7 +19,7 @@
                                 <p class="text-xl">Invested</p>
                             </div>   
                             <div class=" text-right text-[#ffffff] pr-2 ">
-                                <p class="text-xl pb-1">₹ 12394577</p>
+                                <p class="text-xl pb-1">₹ {{current}}</p>
                                 <p class="text-xl">₹ {{invested}}</p>
                             </div>         
                         </div>
@@ -29,7 +29,7 @@
                                 <p class="text-xl">Total Return</p>
                             </div>   
                             <div class="text-[#ffffff]   ">
-                                <p class="text-xl">₹ 250000</p>
+                                <p class="text-xl">₹ {{current-invested}}</p>
                             </div>         
                         </div>  
                     </div>
@@ -37,11 +37,11 @@
             </div>
             <div  *ngFor="let item of invested_project;">
 
-                <div class="flex flex-row items-center justify-between py-2 bg-[#F4F3F3]">
-                    <div class="w-48 text-center" (click)="viewDetails(item.project_id)" >
+                <div class="flex flex-row items-center justify-between bg-[#F4F3F3] border-b-2">
+                    <div class="text-center p-2 "  >
                         {{item.name}}</div>
-                    <div>
-                        <p class="text-[#23766A]" >VIEW DETAILS</p>
+                    <div class="p-2">
+                        <p class="text-[#23766A]" (click)="viewDetails(item.project_id)">VIEW DETAILS</p>
                     </div>
                 </div>
             </div>

@@ -12,8 +12,11 @@ export class UserTransactionComponent implements OnInit {
   alltransac: boolean=true;
   transactions:any = getPlotDetails().transactions;
   alltransactions:any=getPlotDetails().all_transactions;
+  index: number = 0;
 projectName: string = '';
 project:any[]=[];
+filteredArray:any[]=[];
+
   constructor(private route: ActivatedRoute){
  this.project = Object.keys(getPlotDetails().transactions);
 
@@ -22,11 +25,12 @@ project:any[]=[];
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.alltransac=false
-      this.projectName = params['index'];
-      this.transactions = getPlotDetails().transactions[this.projectName] || [];
-      console.log("transactions",this.transactions);
-      console.log("param",this.projectName);
+      this.index = +params['index']; // Convert to number
+      console.log("user transaction",this.index)
+      // this.transactions = getPlotDetails().transactions[this.projectName] || [];
+       this.filteredArray = getPlotDetails().all_transactions.filter((tx: { project_id: any; }) => tx.project_id === this.index);
+      console.log("filter Array",this.filteredArray)
+      
       
     });
     this.route.queryParams.subscribe(params => {

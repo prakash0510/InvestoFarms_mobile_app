@@ -1,5 +1,5 @@
 <div class="bg-[#E6f4ea] text-[#2e3b32] h-[100vh] overflow-y-auto overflow-hidden">
-    <header class="flex bg-[#23766A] rounded-b-xl shadow-xl justify-between w-[100%] items-center p-4">
+    <header class="flex bg-[#23766A] rounded-b-xl shadow-xl justify-between w-[100%] items-center p-4 ">
       <div class="title">
         <h2 class="text-[30px] text-[#B3DDC0] font-bold pl-2 underline-offset-4">Notification</h2>
       </div>
@@ -13,24 +13,30 @@
   <div class="loading-spinner"></div>
 </div>
   
+<div *ngIf="!hasNotification" class="flex-grow relative">
+    <img src="../../../../assets/images/noNotification.png" alt="" class="absolute top-0 left-0 w-full h-[calc(100vh-80px)] object-cover z-0 shadow-lg">
+</div>
     <div *ngIf="!loading" class="flex flex-col mx-2 overflow-y-auto p-1 px-3 mt-[20px] space-y-3 mb-40">
-      <!-- Loop through notifications using *ngFor -->
-      <div *ngFor="let notification of notifications" 
-           class="flex justify-between items-center bg-[#B3DDC0] p-4 rounded-2xl shadow-sm transition-shadow 
-                  hover:shadow-md active:shadow-md focus:shadow-md">
-        <div class="flex items-center gap-3">
-          <div>
-            <img class="h-auto w-14 rounded-2xl"  src="../../../../assets/images/AppIcon.jpg" alt="Notification Icon"/>
-          </div>
-          <div class="font-bold text-lg">
-            <p>{{ notification.Title }}</p>
-            <p class="text-sm font-normal text-[#2e3b32]">{{ notification.Message }}</p>
-          </div>
-        </div>
-        <div class="font-bold text-xs text-[#23766A]">
-          <p>{{notification.Created_At | dateFormat }}</p>
-        </div>
+      <div *ngIf="hasNotification">
+                <div *ngFor="let notification of notifications" 
+                class="flex justify-between items-center bg-[#B3DDC0] my-2 py-1 rounded-2xl shadow-sm transition-shadow 
+                      hover:shadow-md active:shadow-md focus:shadow-md">
+                  <div class="flex items-center gap-3">
+                    <div class="pl-1">
+                      <img class="h-auto w-14 rounded-2xl"  src="../../../../assets/images/AppIcon.jpg" alt="Notification Icon"/>
+                    </div>
+                    <div class="font-bold text-lg">
+                      <p>{{ notification.Title }}</p>
+                      <p class="text-sm font-normal text-[#2e3b32]">{{ notification.Message }}</p>
+                    </div>
+                  </div>
+                  <div class="font-bold text-xs text-[#23766A] pr-2">
+                    <p>{{notification.Created_At | dateFormat }}</p>
+                  </div>
+                </div>
       </div>
+      <!-- Loop through notifications using *ngFor -->
+      
     </div>
   </div>
 

@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { setPlotDetails, plotDetails } from '../../assets/constants/plotDetails';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,12 @@ export class PlotService {
 
   constructor(private http: HttpClient) {}
 
-  fetchPlotDetails(): void {
-    this.http.get<any>(this.apiUrl).subscribe({
-      next: (data) => {
-        setPlotDetails(data); // Store API data in `plotDetails.ts`
-        // console.log('Data stored:', plotDetails); // Debugging
-      },
-      error: (err) => {
-        console.error('Error fetching plot details:', err);
-      }
-    });
+  fetchPlotDetails(): Observable<any> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      tap(data => {
+        setPlotDetails(data); // You can still store the data here
+      })
+    );
+  
   }
 }

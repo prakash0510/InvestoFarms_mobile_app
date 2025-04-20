@@ -8,8 +8,8 @@
     <div class="profile flex items-center mt-6">
       <img src="assets/images/profilePic.png" alt="Profile Avatar" class="avatar h-16 w-16 rounded-full border-2 border-[#28937F]" />
       <div class="profile-info ml-4">
-        <h3 class="text-[20px] font-bold text-[#23766A]">Test Profile</h3>
-        <h3 class="text-[16px] text-[#696969]">+918509555276</h3>
+        <h3 class="text-[20px] font-bold text-[#23766A]">{{user.user.Name}}</h3>
+        <h3 class="text-[16px] text-[#696969]">{{user.user.Mobile_Number}}</h3>
       </div>
     </div>
   </header>
@@ -18,15 +18,15 @@
   <section class="mt-8">
     <h3 class="text-[18px] font-bold text-[#23766A] mb-4">Profile Setting</h3>
     <ul class="space-y-3">
-      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/account-details">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/account-details" (click)="vibrate()">
         <p class="font-medium text-[#696969]">Account Details</p>
         <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
       </li>
-      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/nominee-details">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/nominee-details" (click)="vibrate()">
         <p class="font-medium text-[#696969]">Nominee Details</p>
         <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
       </li>
-      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/bank-details">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/bank-details" (click)="vibrate()">
         <p class="font-medium text-[#696969]">Bank Account Details</p>
         <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
       </li>
@@ -50,16 +50,16 @@
         <p class="font-medium text-[#696969]">Security and Permission</p>
         <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
       </li>
-      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/help-and-support">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/help-and-support" (click)="vibrate()">
         <p class="font-medium text-[#696969]">Help and Support</p>
         <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
       </li>
-      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/our-mission">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/our-mission" (click)="vibrate()">
         <p class="font-medium text-[#696969]">Our Mission & Vision</p>
         <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
       </li>
       
-      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/about-investofarms">
+      <li class="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" routerLink="/profile/about-investofarms" (click)="vibrate()">
         <p class="font-medium text-[#696969]">About InvestoFarms</p>
         <img class="arrow-right h-5 w-5" src="../../assets/images/Chevron right.png" alt="arrow-right">
       </li>
@@ -69,7 +69,7 @@
   <!-- Footer Buttons -->
   <footer class="mt-8">
     <div class="flex flex-col space-y-3">
-      <button class="w-full p-3 bg-[#28937F] text-white rounded-lg hover:bg-[#23766A] transition-colors shadow-md" routerLink="/profile/feedback">
+      <button class="w-full p-3 bg-[#28937F] text-white rounded-lg hover:bg-[#23766A] transition-colors shadow-md" routerLink="/profile/feedback" (click)="vibrate()">
         Feedback
       </button>
       <button routerLink="/Login" class="w-full p-3 bg-[#E9B90F] text-white rounded-lg hover:bg-[#DAA520] transition-colors shadow-md" (click)="onLogout()">

@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { NavigationHistoryService } from '../../../services/navigation-history.service';
 
 @Component({
   selector: 'app-forget-password-screen',
@@ -17,12 +18,14 @@ export class ForgetPasswordScreenComponent {
   EmailObj={
     "Email": ""
   }
-  constructor(private authStateService: AuthStateService,private authservice: AuthService,private router: Router) {}
+  constructor(private authStateService: AuthStateService,private authservice: AuthService,private router: Router, private navHistory:NavigationHistoryService) {}
 
   navigateToSignup() {
+    this.navHistory.vibrateClick()
     this.router.navigate(['/Login'], { queryParams: { signup: true } });
   }
   navigateToLogin() {
+  this.navHistory.vibrateClick();
     this.router.navigate(['/Login'], { queryParams: { signup: false } });
   }
   // goToSignUp() {
@@ -32,6 +35,7 @@ export class ForgetPasswordScreenComponent {
   // }
 
   sendOtp(){
+  this.navHistory.vibrateClick();
     this.EmailObj.Email = this.EmailObj.Email.trim();
 
     // Validate if email is provided

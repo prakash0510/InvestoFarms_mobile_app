@@ -8,6 +8,7 @@ import { AuthService } from '../../../services/auth.service';
   standalone:false
 })
 export class NotificationsComponent implements OnInit {
+  hasNotification: boolean=false;
   loading: boolean = true;
   notifications:any[] = [];
   
@@ -23,6 +24,16 @@ export class NotificationsComponent implements OnInit {
       
       // console.log(localStorage.getItem('token'))
       this.notifications = response.data.notifications; 
+      if (this.notifications && this.notifications.length > 0) {
+        this.hasNotification=true;
+        // Do something if it's empty
+        console.log('You have notifications:', this.notifications);
+      } else {
+        // Handle notifications
+        this.hasNotification=false;
+        console.log('No notifications');
+      }
+      
     this.loading= false;
 
     }, error => {

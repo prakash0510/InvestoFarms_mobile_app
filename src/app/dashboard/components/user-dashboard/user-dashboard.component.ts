@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getPlotDetails } from '../../../../assets/constants/plotDetails';
 import { Router } from '@angular/router';
+import { NavigationHistoryService } from '../../../services/navigation-history.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,20 +11,23 @@ import { Router } from '@angular/router';
 })
 export class UserDashboardComponent  {
   invested=getPlotDetails().total_invested_amount;
+  current=10000 + this.invested //hard coded current amount
+
   invested_project=getPlotDetails().invested_project;
-  // testProject=getPlotDetails().transactions["Test Project"];
-  // prodProject=getPlotDetails().transactions["Prod Project"];
+  
   project:any[]=[];
   allTransactions: any[] = getPlotDetails().all_transactions;
 displayedTransactions: any[] = [];
 showAllTransactions: boolean = false;
 limit: number = 3;
 count: number=0;
-index: number=0;
+
 
 
 viewDetails(index: number) {
+  this.navHistory.vibrateClick();
   this.router.navigate(['/home/plot-details'], { queryParams: { index } });
+  console.log("index",index)
 }
 
 ngOnInit() {
@@ -53,7 +57,7 @@ ngOnInit() {
     }
   }
   
-  constructor(private router:Router){
+  constructor(private router:Router, private navHistory:NavigationHistoryService){
     // console.log(this.testProject);
     // console.log(this.prodProject);
     console.log(this.invested_project)
@@ -67,12 +71,14 @@ ngOnInit() {
     this.expandedProject = this.expandedProject === projectName ? null : projectName;
   }
 
-  viewTransactions(index: string){
+  viewTransactions(index: number){
+    this.navHistory.vibrateClick();
     this.router.navigate(['/dashboard/user-transaction'], { queryParams: { index } });
-    console.log(index)
+    console.log("projID",index)
   }
 
   viewAllTransaction(check:boolean){
+    this.navHistory.vibrateClick();
     this.router.navigate(['/dashboard/user-transaction'], { queryParams: { check } });
   }
   

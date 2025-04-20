@@ -15,9 +15,8 @@
           </div>
         </div>
         <div>
-          <p class="text-[#23766A] text-[20px] font-bold underline text-center p-4"  [routerLink]="['/home/plot-details']"
-          [queryParams]="{ index: i }"
-          (click)="viewDetails(i)">View Details</p>         
+          <p class="text-[#23766A] text-[20px] font-bold underline text-center p-4"  
+          (click)="viewDetails(item.ID)">View Details</p>         
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="text-[#2e3b32] px-4 py-2 bg-[#E6F4EA] h-[100vh] overflow-y-auto overflow-hidden" >
     <!-- Header Section -->
     <div class="mt-[2vh] flex items-center justify-between px-4">
-      <img  class="h-6 w-6 cursor-pointer hover:opacity-80 transition-opacity" src="../../../../assets/images/back.png" alt="back">
+      <img  class="h-6 w-6 cursor-pointer hover:opacity-80 transition-opacity" src="../../../../assets/images/back.png" alt="back" (click)="goBack()">
       <p class="font-bold text-[24px] text-[#23766A]">Bank Details</p>
       <img class="h-8 w-auto" src="../../../../assets/images/output-onlinepngtools.png" alt="logo">
     </div>
@@ -9,19 +9,35 @@
     <!-- Form Section -->
     <section class="mt-6 px-4">
       <form >
-        <div>
+        <!-- <div>
             <p>Bank Name</p>
             <input type="text" name="bank" id="" [(ngModel)]="bankObj.Bank_Name">
+        </div> -->
+        <div class="mb-6">
+          <label class="block text-[#23766A] font-medium mb-2">Bank Name</label>
+          <input type="text" [(ngModel)]="bankObj.Bank_Name" name="bank name"
+                 class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
         </div>
-        <div>
+
+        <!-- <div>
             <p>Account Number</p>
             <input type="text" name="bank" id="" [(ngModel)]="bankObj.Account_Number">
+        </div> -->
+        <div class="mb-6">
+          <label class="block text-[#23766A] font-medium mb-2">Account Number</label>
+          <input type="text" [(ngModel)]="bankObj.Account_Number" name="account number"
+                 class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
         </div>
-        <div>
+
+        <!-- <div>
             <p>IFSC Code</p>
             <input type="text" name="bank" id="" [(ngModel)]="bankObj.IFSC_Code">
+        </div> -->
+        <div class="mb-6">
+          <label class="block text-[#23766A] font-medium mb-2">IFSC Code</label>
+          <input type="text" [(ngModel)]="bankObj.IFSC_Code" name="IFSC_Code"
+                 class="w-full bg-white rounded-lg border-[#23766A] border-2 p-3 placeholder-[#23766A] focus:outline-none focus:ring-2 focus:ring-[#28937F] focus:border-transparent">
         </div>
-       
         
         <div class="m-4  w-16 bg-green-700 text-center rounded-md text-white" (click)="postBankDetail()">
             Submit

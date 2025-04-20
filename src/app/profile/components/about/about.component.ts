@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationHistoryService } from '../../../services/navigation-history.service';
 
 @Component({
   selector: 'about-investofarms',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   standalone:false
 })
 export class AboutComponent {
+  constructor(private navHistory:NavigationHistoryService){}
+  vibrate(){
+    this.navHistory.vibrateClick()
+  }
 
 }

@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NavigationHistoryService } from '../../../services/navigation-history.service';
 
 @Component({
   selector: 'app-rest-password',
@@ -18,13 +19,15 @@ export class RestPasswordComponent {
     confirmPassword: '',
   };
 
-  constructor(private authService: AuthService, private router:Router,private toastr:ToastrService) {}
+  constructor(private authService: AuthService, private router:Router,private toastr:ToastrService,private navHistory:NavigationHistoryService) {}
 
   navigateToForgetpwd(){
+  this.navHistory.vibrateClick();
     this.router.navigateByUrl('/Forget-password')
   }
 
   updatePassword() {
+  this.navHistory.vibrateClick();
     console.log(this.passwordObj); // Debugging
 
     // Trim input values to avoid accidental spaces

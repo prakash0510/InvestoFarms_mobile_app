@@ -25,29 +25,44 @@
                 TRANSACTIONS
             </p>
         </div>
-        <div class="text-[#23766A]">
-            VIEW ALL-->
-        </div>
+        <!-- <div class="text-[#23766A]">
+            VIEW ALL
+        </div> -->
     </div>
-    <div *ngIf="alltransac">
+    <div *ngIf="alltransac" class="overflow-y-auto overflow-hidden">
 
         <div  class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]" *ngFor="let item of alltransactions">
             <div >
-                <p>{{item.Name}}</p>
-                <P>18/09/2024 | Razorpay ID</P>
+                <p class="font-medium">{{item.Name}}</p>
+                <P class="text-xs">{{item.payment_date | dateFormat}} | Payment ID: {{item.payment_id}}</P>
             </div>
-            <div class="text-[#23766A] text-xl">
-                <P>2500></P>
+            <div class=" text-xl">
+                <P class="text-[#23766A] text-right">{{item.payment_amount}}</P>
+                <p class="text-sm text-right" [ngClass]="{
+                    'text-green-600': item.payment_status === 'Completed',
+                    'text-yellow-500': item.payment_status === 'Pending',
+                    'text-red-600': item.payment_status === 'Failed'
+                  }">
+                    {{ item.payment_status }}
+                  </p>
             </div>
         </div>
     </div>
-    <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]" *ngFor="let item of transactions">
+    <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]" *ngFor="let item of filteredArray">
         <div>
-            <p>{{item.Name}}</p>
-            <P>18/09/2024 | Razorpay ID</P>
+            <p class="font-medium">{{item.Name}}</p>
+            <P class="text-xs">{{item.payment_date | dateFormat}} | Payment ID: {{item.payment_id}}</P>
+
         </div>
-        <div class="text-[#23766A] text-xl">
-            <P>2500></P>
+        <div class=" text-xl">
+            <P class="text-[#23766A] text-right">{{item.payment_amount}}</P>
+            <p class="text-sm text-right" [ngClass]="{
+                'text-green-600': item.payment_status === 'Completed',
+                'text-yellow-500': item.payment_status === 'Pending',
+                'text-red-600': item.payment_status === 'Failed'
+              }">
+                {{ item.payment_status }}
+              </p>
         </div>
     </div>
     <!-- <div class="flex flex-row items-center justify-between p-2 mt-4 bg-[#F4F3F3] border border-[#000000]">

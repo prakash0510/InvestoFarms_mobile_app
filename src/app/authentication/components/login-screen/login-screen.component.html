@@ -192,7 +192,7 @@
 
                     </div>
                     <div class="flex justify-center m-6">
-                        <button class="w-[40%] shadow-md text-center rounded-2xl mx-2 p-2" (click)="signInWithGoogle()">
+                        <button class="w-[40%] shadow-md text-center rounded-2xl mx-2 p-2" >
                             Google
                         </button>
                         <div class="w-[40%] shadow-md bg-[#23766A] text-center rounded-2xl mx-2 p-2">
@@ -206,7 +206,7 @@
 
     <!-- Footer (Now Always Stays at Bottom) -->
     <div class="footer z-10 fixed bottom-0 w-full  h-[100px]  rounded-t-[50px] bg-[#23766A] text-center text-white" >   
-        <p class="p-3" >Already have an account</p>
+        <p class="p-3" (click)="navigateToSignup()" >Don't have an account</p>
     </div>
 </div>
 

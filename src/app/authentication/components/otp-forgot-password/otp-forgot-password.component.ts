@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { NavigationHistoryService } from '../../../services/navigation-history.service';
 
 @Component({
   selector: 'app-otp-forgot-password',
@@ -27,7 +28,7 @@ export class OtpForgotPasswordComponent {
 
   otpRefs: any;
 
-  constructor(private authservice: AuthService,private router:Router,private toastr: ToastrService) {}
+  constructor(private authservice: AuthService,private router:Router,private toastr: ToastrService, private navHistory:NavigationHistoryService) {}
 
   ngAfterViewInit() {
     this.otpRefs = [this.otp1, this.otp2, this.otp3, this.otp4, this.otp5, this.otp6];
@@ -46,6 +47,7 @@ export class OtpForgotPasswordComponent {
   }
 
   submitOtp() {
+  this.navHistory.vibrateClick();
     const otpValue = this.otp.join('');
     if (otpValue.length < 6) {
       console.log('Please enter a complete OTP');
@@ -72,6 +74,7 @@ export class OtpForgotPasswordComponent {
   }
 
   resendOtp() {
+  this.navHistory.vibrateClick();
     this.authservice.getOtp(this.email??'').subscribe((res:any)=>{
 
       console.log('Resending OTP...');
@@ -82,6 +85,7 @@ export class OtpForgotPasswordComponent {
   }
 
   forgetPassword(){
+  this.navHistory.vibrateClick();
     this.router.navigateByUrl("/Forget-password")
   }
 }

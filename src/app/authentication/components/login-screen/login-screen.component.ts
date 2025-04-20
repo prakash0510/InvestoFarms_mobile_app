@@ -13,6 +13,9 @@ import { AuthService } from '../../../services/auth.service';
 import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthService, SocialLoginModule, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleApiService } from '../../../services/google-api.service';
 import { setDetails } from '../../../../assets/constants/userDetails';
+import { PlotService } from '../../../services/plot.service';
+import { getPlotDetails, setPlotDetails } from '../../../../assets/constants/plotDetails';
+import { NavigationHistoryService } from '../../../services/navigation-history.service';
 @Component({
   selector: 'app-login-screen',
   templateUrl: './login-screen.component.html',
@@ -27,6 +30,7 @@ export class LoginScreenComponent{
   
 
 forgetPass() {
+  this.navHistory.vibrateClick();
   this.router.navigateByUrl('Forget-password');
 }
 loginObj: any={
@@ -47,23 +51,28 @@ isSignInMode=true;
 private tokenKey = 'access_token';
 public isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
-constructor(private authservice: AuthService,private router:Router,  private socialAuthService: SocialAuthService, private route: ActivatedRoute, private googleapi:GoogleApiService ){}
+constructor(private authservice: AuthService,private router:Router,  private socialAuthService: SocialAuthService, private route: ActivatedRoute, private googleapi:GoogleApiService,private plotservice: PlotService, private navHistory:NavigationHistoryService ){}
 
-signInWithGoogle(): void {
-  this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user: SocialUser) => {
-    const idToken = user.idToken;
+// signInWithGoogle(): void {
+//   this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user: SocialUser) => {
+//     const idToken = user.idToken;
 
-    // Now send this ID token to your backend
-    this.authservice.googleLogin(idToken).subscribe((res: any) => {
-      localStorage.setItem('token', res.access_token);
-      localStorage.setItem('refresh_token', res.refresh_token);
-      localStorage.setItem('UserID', res.user.id);
-      this.router.navigateByUrl('/home/home-screen');
-    });
-  }).catch(error => {
-    console.error('Google Sign-In Error:', error);
-    alert('Google Sign-In failed');
-  });
+//     // Now send this ID token to your backend
+//     this.authservice.googleLogin(idToken).subscribe((res: any) => {
+//       localStorage.setItem('token', res.access_token);
+//       localStorage.setItem('refresh_token', res.refresh_token);
+//       localStorage.setItem('UserID', res.user.id);
+//       this.router.navigateByUrl('/home/home-screen');
+//     });
+//   }).catch(error => {
+//     console.error('Google Sign-In Error:', error);
+//     alert('Google Sign-In failed');
+//   });
+// }
+
+navigateToSignup() {
+  this.navHistory.vibrateClick()
+  this.router.navigate(['/Login'], { queryParams: { signup: true } });
 }
 
 setToken(token: string) {
@@ -117,14 +126,23 @@ ngOnInit(): void {
 
 onLogin(){
   // this.loading= true;
-
+  this.navHistory.vibrateClick();
   this.authservice.login(this.loginObj.Email,this.loginObj.Password).subscribe((res:any)=>{
-   localStorage.setItem('token',res.access_token)
-   localStorage.setItem('UserID',res.user.id)
-   setDetails(res)
-   console.log("UserID",res.user.id)
-   this.router.navigateByUrl('/home/home-screen')
-  // this.loading= false;
+    setDetails(res)
+    console.log(res)
+    localStorage.setItem('userDetails',JSON.stringify(res));
+   localStorage.setItem('token',res.access_token);
+   localStorage.setItem('UserID',res.user.id);
+   localStorage.setItem('isLoggedIn',"true");
+   this.plotservice.fetchPlotDetails().subscribe((res)=>{
+     setPlotDetails(res);
+     if (Object.keys(getPlotDetails()).length === 0) {
+      console.log("No properties")
+    } else{
+      this.router.navigate(["/home/home-screen"])
+    }
+    })
+ 
 
   }, error=>{
     alert('Wrong credentials')
@@ -134,6 +152,7 @@ onLogin(){
 }
 
 onSignup(){
+  this.navHistory.vibrateClick();
   this.authservice.onSignup(this.SignupObj.Name,this.SignupObj.Email,this.SignupObj.Mobile_Number,this.SignupObj.City,this.SignupObj.State,this.SignupObj.Pincode,this.SignupObj.Password).subscribe((res:any)=>{
     alert(res)
   })

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild }
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { getPlotDetails } from '../../../../assets/constants/plotDetails';
+import { NavigationHistoryService } from '../../../services/navigation-history.service';
 
 @Component({
   selector: 'app-progress-image',
@@ -19,7 +20,7 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
 
   projects: any[] = getPlotDetails().projects;
 
-  constructor(private router: Router, private renderer: Renderer2, private authService: AuthService) {}
+  constructor(private router: Router, private renderer: Renderer2, private authService: AuthService,private navHistory:NavigationHistoryService) {}
 
   ngOnInit(): void {
     // this.fetchProjects();
@@ -88,6 +89,7 @@ export class ProgressImageComponent implements AfterViewInit, OnDestroy {
   }
 
   viewDetails(index: number) {
+  this.navHistory.vibrateClick();
     this.router.navigate(['/home/plot-details'], { queryParams: { index } });
   }
 
