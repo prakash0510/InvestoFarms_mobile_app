@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'success-payment',
-    component: SuccessPaymentComponent
+    component: PaymentResponseComponent
   },
   {
     path: 'failed-payment',

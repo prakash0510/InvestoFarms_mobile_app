@@ -77,16 +77,20 @@ export class PlotDetailsComponent implements OnInit{
       next: async (order) => {
         try {
           const res = await this.razorpayService.openCheckout(order);
-          alert('✅ Payment Successful! \n' + JSON.stringify(res));
+          // alert('✅ Payment Successful! \n' + JSON.stringify(res));
           // localStorage.setItem('paymentStatus',JSON.stringify(res))
-          
+          this.router.navigate(['/home/success-payment'], {
+            state: { paymentResponse: JSON.stringify(res) }
+          }); 
           
         } catch (error) {
+          // this.router.navigate(['/home/success-payment'])
           alert('❌ Payment Failed \n' + JSON.stringify(error));
         }
       },
       error: (err) => {
         alert('Failed to create order. Please try again.');
+        // this.router.navigate(['/home/success-payment'])
         console.error(err);
       }
     });

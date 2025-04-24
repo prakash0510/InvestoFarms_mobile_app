@@ -14,13 +14,15 @@ export class PaymentResponseComponent {
 
   constructor(private router: Router) {
     const nav = this.router.getCurrentNavigation();
-    const stringData = nav?.extras?.state?.['paymentResponse'];
+    const data = nav?.extras?.state?.['paymentResponse'];
 
-    if (stringData) {
+    if (data) {
       try {
-        this.paymentData = JSON.parse(stringData);
+        const parsed = typeof data === 'string' ? JSON.parse(data) : data;
+        this.paymentData = parsed.response; // ✅ extract response object
+        console.log('✅ Extracted Payment Data:', this.paymentData);
       } catch (err) {
-        console.error('Error parsing payment response:', err);
+        console.error('❌ Error parsing payment response:', err);
       }
     }
   }
